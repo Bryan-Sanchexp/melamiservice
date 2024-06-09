@@ -1,5 +1,6 @@
 function loadPage() {
     let helper = new Helper();
+
     const configTablaCategoria = {
         ...helper.configuracionDataTable,
         "ajax": {

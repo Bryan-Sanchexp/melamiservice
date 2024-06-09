@@ -12,18 +12,16 @@
                   </a>
               </div>
           </div>
-          <!-- <div class="contenido-busqueda">
-        <input type="text" placeholder="Buscar" class="form-control form-control-sm" style="width:300px;">
-      </div> -->
+        
           <div class="informacion">
               <div class="dropdown">
                   <button class="btn btn-sm btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="<?php echo URL . '/Public/img/avatarAdmin.png' ?>" class="imagen-icono" alt="Avatar admin">
+                      <img src="<?php echo URL . '/Public/img/avatarBodega.png' ?>" class="imagen-icono" alt="Avatar bodega">
                       <span class="nombre-usuario"><?= $data['nombres'] ?></span>
                   </button>
                   <ul class="dropdown-menu">
                       <li><a class="dropdown-item text-secondary" href="#"><i class="fa-solid fa-circle-info"></i> Mi información</a></li>
-                      <li><a class="dropdown-item cerrar-sesion text-secondary" href="javascript:void(0)    "><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión</a></li>
+                      <li><a class="dropdown-item cerrar-sesion text-secondary" href="javascript:void(0)"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión</a></li>
                   </ul>
               </div>
           </div>
@@ -32,34 +30,21 @@
   <div class="modulos">
       <div class="img-admin">
           <div class="py-3">
-              <img src="<?php echo URL . '/Public/img/avatarAdmin.png' ?>" alt="Avatar admin">
+              <img src="<?php echo URL . '/Public/img/avatarBodega.png' ?>" alt="Avatar bodega">
           </div>
-          <span class="d-block"><?= $data['nombres'] . ' ' . $data['apellidos'] ?></span>
-          <span>Administrador</span>
+          <span><?= $data['nombres'] ?></span>
       </div>
       <ul class="lista-modulos">
-          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/inicio' ? 'activo' : '' ?>">
+        <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/inicio' ? 'activo' : '' ?>">
               <a href="/intranet/inicio">
                   <i class="fa-solid fa-house"></i>
                   <span>Inicio</span>
               </a>
           </li>
-          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/administrador/bodegas' ? 'activo' : '' ?>">
-              <a href="/intranet/administrador/bodegas">
-                  <i class="fa-solid fa-shop"></i>
-                  <span>Colaboradores</span>
-              </a>
-          </li>
-          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/administrador/categorias' ? 'activo' : '' ?>">
-              <a href="/intranet/administrador/categorias">
+          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/ventas/pedidos' ? 'activo' : '' ?>">
+              <a href="/intranet/ventas/pedidos">
                   <i class="fa-solid fa-tags"></i>
-                  <span>Categoría</span>
-              </a>
-          </li>
-          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/administrador/marcas' ? 'activo' : '' ?>">
-              <a href="/intranet/administrador/marcas">
-                  <i class="fa-solid fa-certificate"></i>
-                  <span>Marcas</span>
+                  <span>Pedidos</span>
               </a>
           </li>
           <li>

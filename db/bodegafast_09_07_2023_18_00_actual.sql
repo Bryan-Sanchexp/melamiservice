@@ -718,7 +718,7 @@ END
 delimiter ;
 
 -- ----------------------------
--- Procedure structure for SP_R_T_ACCESO
+-- Procedure structure for SP_R_T_ACCESO (agrear roles de usuario o cambiar el procedimiento)
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `SP_R_T_ACCESO`;
 delimiter ;;

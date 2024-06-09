@@ -2,20 +2,20 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Bodega</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Colaborador</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form class="row g-3 needs-validation" id="frmBodega">
                     <div class="col-md-6 col-12">
-                        <label for="validationCustom01" class="form-label">RUC</label>
+                        <label for="validationCustom01" class="form-label">Nombre</label>
                         <input type="text" name="ruc" class="form-control" id="validationCustom01">
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                     </div>
                     <div class="col-md-6 col-12">
-                        <label for="validationCustom02" class="form-label">Nombre</label>
+                        <label for="validationCustom02" class="form-label">Apellidos</label>
                         <input type="text" name="nombre" class="form-control" id="validationCustom02" required>
                         <div class="valid-feedback">
                             Looks good!
@@ -62,14 +62,14 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
-                        <label for="validationCustom05" class="form-label">DNI Propietario</label>
+                        <label for="validationCustom05" class="form-label">ROL </label>
                         <input type="text" name="dni_propietario" class="form-control" id="validationCustom05" required>
                         <div class="invalid-feedback">
                             Please provide a valid zip.
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
-                        <label for="validationCustom05" class="form-label">Nombre Propietario</label>
+                        <label for="validationCustom05" class="form-label">DNI</label>
                         <input type="text" name="nombre_propietario" class="form-control" id="validationCustom05" required>
                         <div class="invalid-feedback">
                             Please provide a valid zip.

@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="graficos-informes mb-3 col-12 col-lg-6">
+        <!-- <div class="graficos-informes mb-3 col-12 col-lg-6">
             <div class="border p-2 bg-white">
                 <h4 class="text-center titulo-principal-modulo">Productos vendidos</h4>
                 <div class="p-3">
@@ -83,7 +83,7 @@
                 <div class="p-2">
                 <canvas id="compraracionVentas"></canvas>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>

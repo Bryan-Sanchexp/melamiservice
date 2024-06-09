@@ -15,8 +15,13 @@
                 </li>
                 <li> <a href=""><i class="fa-solid fa-users"></i> Nosotros</a>
                 </li>
-                <li class="<?php echo $_SERVER['REQUEST_URI'] == '/listar/productos' ? 'activo' : '' ?>"> <a href="<?php echo URL . '/listar/productos' ?>" class=""><i class="fa-solid fa-box-open"></i> Productos</a>
-                </li>
+
+              <!-- <li class="<?php echo $_SERVER['REQUEST_URI'] == '/listar/productos' ? 'activo' : '' ?>"> <a href="<?php echo URL . '/listar/productos' ?>" class=""><i class="fa-solid fa-box-open"></i> Productos</a>
+                </li>  -->
+
+
+                
+
                 <li class="<?php echo $_SERVER['REQUEST_URI'] == '/login' ? 'activo-btn' : '' ?>">
                     <?php
                     if (isset($data) && isset($data['iniciales'])) {
@@ -41,11 +46,13 @@
                     ?>
                     </a>
                 </li>
-                <li class="<?php echo $_SERVER['REQUEST_URI'] == '/carrito/compras' ? 'activo-btn' : '' ?>">
+
+                <!-- <li class="<?php echo $_SERVER['REQUEST_URI'] == '/carrito/compras' ? 'activo-btn' : '' ?>">
                     <a href="<?php echo URL . '/carrito/compras' ?>" class="btn btn-sm btn-light text-secondary position-relative <?php echo isset($_COOKIE['carrito_compras']) ? 'badge-notification' : ''?>" id="btnCarritoCompras" data-info="<?php echo isset($_COOKIE['carrito_compras']) ? count(json_decode($_COOKIE['carrito_compras'],true)) : ''?>">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </a>
-                </li>
+                </li> -->
+
             </ul>
         </div>
     </nav>
