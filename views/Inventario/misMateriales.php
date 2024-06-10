@@ -14,7 +14,7 @@
         <h3 class="text-center titulo-principal-modulo mb-4">Categoría de Materiales</h3>
         <div class="bg-white p-3 mb-5">
             <div class="text-end">
-                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#bodegaModal">
+                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#materialesModal">
                     <i class="fa-solid fa-plus"></i>
                     Agregar Materiales
                 </button>

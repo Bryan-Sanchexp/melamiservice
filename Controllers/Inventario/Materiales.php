@@ -43,7 +43,10 @@ class Materiales {
     public function agregarMateriales(array $datos)
     {
         $materialesModel = new MaterialesModel();
-        $materialesModel->setNombre($datos['nombre_materiales']);
+        $materialesModel->setNombre($datos['nombre']);
+        $materialesModel->setMarca($datos['marca']);
+        $materialesModel->setPrecio($datos['precio']);
+        $materialesModel->setStock($datos['stock']);
         return $materialesModel->agregar();
     }
 

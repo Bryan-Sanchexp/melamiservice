@@ -57,7 +57,7 @@
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="invalidCheck">
                             <label class="form-check-label" for="invalidCheck">
-                                Estoy de acurdo con las condiciones
+                                Estoy de acuerdo con las condiciones
                             </label>
                             <div class="invalid-feedback">
                                 You must agree before submitting.

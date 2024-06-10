@@ -43,7 +43,7 @@ class Materiales extends Conexion
         $stmt = $cn->prepare("CALL SP_D_T_MATERIALES(?)");
         $stmt->bind_param("i", $this->id);
         $stmt->execute();
-        $response = $stmt->error == '' ? ['success' => 'Categoría eliminada correctamente'] : ['error' => 'La categoría no se eliminó'];
+        $response = $stmt->error == '' ? ['success' => 'Material eliminado correctamente'] : ['error' => 'El material no se eliminó'];
         $stmt->close();
         return $response;
     }

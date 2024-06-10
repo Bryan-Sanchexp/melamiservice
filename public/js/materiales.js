@@ -73,7 +73,7 @@ function loadPage() {
                     helper.alertaToast(response.success ? "success" : "error", response.success ? response.success : "Error al eliminar el material");
                 }
             } catch (error) {
-                helper.alertaToast("error","error al eliminar el material");
+                helper.alertaToast("error","Error al eliminar el material");
                 console.error(error);
             }
         }
