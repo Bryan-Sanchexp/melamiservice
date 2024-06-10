@@ -1,6 +1,6 @@
 function loadPage() {
     let helper = new Helper();
-
+    console.log(helper)
     const configTablaMateriales = {
         ...helper.configuracionDataTable,
         "ajax": {
@@ -18,7 +18,16 @@ function loadPage() {
                 }
             },
             {
-                data: 'nombreMateriales'
+                data: 'nombre'
+            },
+            {
+                data: 'marca'
+            },
+            {
+                data: 'precio'
+            },
+            {
+                data: 'stock'
             },
             
             {
@@ -43,7 +52,7 @@ function loadPage() {
     const datatableMateriales = $('#misMateriales').DataTable(configTablaMateriales);
     const tablaMisMateriales = document.querySelector("#misMateriales");
     const modalEditarMateriales = document.querySelector("#materialesModal");
-    const modalMateriales = new bootstrap.Modal(modalEditarCategoria);
+    const modalMateriales = new bootstrap.Modal(modalEditarMateriales);
     tablaMisMateriales.querySelector("tbody").addEventListener("click",async function(event){
         if(event.target.classList.contains("btn-outline-info")){
             modalMateriales.show();
@@ -56,7 +65,7 @@ function loadPage() {
                 if(alertaSweet.isConfirmed){
                     let datos = new FormData();
                     datos.append("accion","eliminar-materiales");
-                    datos.append("idMateriales",idCategoria);
+                    datos.append("idMateriales",idMateriales);
                     const response = await helper.peticionHttp(helper.urlMateriales,"POST",datos);
                     if(response.success){
                         datatableMateriales.ajax.reload();

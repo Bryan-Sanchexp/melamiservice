@@ -43,7 +43,7 @@ class Login{
     }
     public function inicioIntranet()
     {
-        $rol = ['rol_bodega', 'rol_administrador'];
+        $rol = ['rol_bodega', 'rol_administrador', 'rol_usuario'];
         $usuarioModel = new ModelUsuario();
         $data = $usuarioModel->obtenerDatosAutenticado();
         if(empty($data)){

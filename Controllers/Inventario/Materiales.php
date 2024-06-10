@@ -1,5 +1,5 @@
 <?php
-namespace Controllers\Administrador;
+namespace Controllers\Inventario;
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Models/MaterialesModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Models/UsuarioModel.php';
@@ -9,17 +9,17 @@ use Models\Materiales as MaterialesModel;
 use Models\Usuario as UsuarioModel;
 
 class Materiales {
-     public function indexHome()
-    {
-        //instanciamos el modelo usuario
-        $usuarioModel = new UsuarioModel();
+    // public function indexHome()
+    // {
+    // //instanciamos el modelo usuario
+    // $usuarioModel = new UsuarioModel();
        
-        //obtenemos los datos a traves de sus metodo 
-        $data = $usuarioModel->obtenerDatosAutenticado();
+    // //obtenemos los datos a traves de sus metodo 
+    // $data = $usuarioModel->obtenerDatosAutenticado();
         
-        //mostramos la vista principal
-        include("views/principal.php");
-    }
+    // // mostramos la vista principal
+    //   include("views/principal.php");
+    //   }
     public function indexMateriales()
     {
         $usuarioModel = new UsuarioModel();
@@ -32,7 +32,7 @@ class Materiales {
             header("location: /intranet/inicio");
             die();
         }
-        require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/Inventario/misMateriales.php");
+        require_once($_SERVER['DOCUMENT_ROOT'] . "/views/Inventario/misMateriales.php");
     }
     public function obtenerMateriales()
     {

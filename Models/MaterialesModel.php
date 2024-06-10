@@ -30,7 +30,7 @@ class Materiales extends Conexion
     {
         $cn = $this->conectar();
         $stmt = $cn->prepare("CALL SP_C_T_MATERIALES(?,?,?,?)");
-        $stmt->bind_param("sss", $this->nombre,$this->marca, $this->precio, $this->stock);
+        $stmt->bind_param("ssss", $this->nombre,$this->marca, $this->precio, $this->stock);
         $stmt->execute();
         $response = $stmt->error == '' ? ['success' => 'Material agregado correctamente'] : ['error' => 'El material no se agregó'];
         $stmt->close();
@@ -52,7 +52,7 @@ class Materiales extends Conexion
     {
         $cn = $this->conectar();
         $stmt = $cn->prepare("CALL SP_U_T_MATERIALES(?,?,?,?,?)");
-        $stmt->bind_param("isss", $this->id, $this->nombre,$this->marca, $this->precio, $this->stock);
+        $stmt->bind_param("issss", $this->id, $this->nombre,$this->marca, $this->precio, $this->stock);
         $stmt->execute();
         $response = $stmt->error == '' ? ['success' => 'Material actualizado correctamente'] : ['error' => 'El material no se actualizó'];
         $stmt->close();

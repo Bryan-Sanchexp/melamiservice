@@ -3,7 +3,7 @@ namespace Models;
 class Conexion{
     private string $host = "localhost";
     private string $port = "3307";
-    private string $db = "melamiservice";
+    private string $db = "melamiserviceprueba";
     private string $user = "root";
     private string $password = "root123";
 
