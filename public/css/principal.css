@@ -9,6 +9,12 @@
     position: relative;
     color: var(--color-principal);
 }
+.titulo {
+    background-color: white;
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+    display: inline-block; /* Para que el ancho se ajuste al contenido */
+}
 .categorias .lista-categorias{
     display: flex;
     gap: 20px 50px;

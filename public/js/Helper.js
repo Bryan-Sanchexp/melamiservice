@@ -1,6 +1,8 @@
 class Helper{
+
     urlProductos = window.location.origin + "/Http/Bodega/productos.php"
     urlBodegas = window.location.origin + "/Http/Administrador/Bodega.php"
+    urlPedidos = window.location.origin + "/Http/Ventas/Pedidos.php"
     urlMarcas = window.location.origin + "/Http/Administrador/Marcas.php"
     urlCategorias = window.location.origin + "/Http/Administrador/Categorias.php"
     urlLogin = window.location.origin + "/Http/Usuario.php"
@@ -13,7 +15,7 @@ class Helper{
         return fetch(url,{
             method: metodo,
             body : datos
-        }).then(response => response.json());
+        }).then(response => response.json()).catch(error => console.error(error));
     }
     alertaToastSweet = Swal.mixin({
         toast: true,

@@ -9,8 +9,11 @@ $router->add("/login", "Controllers\Login@indexLogin");
 $router->add("/intranet/bodega/agregar-producto", "Controllers\Bodega\Producto@indexAdminProducto");
 $router->add("/intranet/bodega/producto/historial", "Controllers\Bodega\Producto@indexHistorialProducto");
 $router->add("/intranet/bodega/producto/histoarial", "Controllers\Bodega\Producto@indexHistorialProducto");
-
 $router->add("/intranet/bodega/agregar-venta", "Controllers\Bodega\Venta@indexBodegaAgregarVenta");
+
+$router->add("/intranet/ventas/pedidos", "Controllers\Ventas\Pedido@indexPedidos");//Test
+$router->add("/intranet/inventario/materiales", "Controllers\Inventario\Materiales@indexMateriales");//Test
+
 $router->add("/intranet/bodega/reporte-ventas", "Controllers\Bodega\Venta@reporteVenta");
 $router->add("/intranet/bodega/mis-productos", "Controllers\Bodega\Producto@indexAdminMisProductos");
 $router->add("/intranet/bodega/mis-ventas", "Controllers\Bodega\Venta@indexBodegaMisVentas");
@@ -21,6 +24,5 @@ $router->add("/intranet/inicio", "Controllers\Login@inicioIntranet");
 $router->add("/usuario/cerrar-sesion", "Controllers\Login@cerrarSesion");
 $router->add("/carrito/compras", "Controllers\Cliente\Compras@indexCarritoCompras");
 $router->add("/correo", "Controllers\Correo@configurarCorreo");
-
 $router->run();
 ?>

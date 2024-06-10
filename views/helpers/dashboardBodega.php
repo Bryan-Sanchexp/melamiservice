@@ -43,19 +43,31 @@
                   <span>Inicio</span>
               </a>
           </li>
-          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/bodega/agregar-producto' ? 'activo' : '' ?>">
+           <!--<li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/bodega/agregar-producto' ? 'activo' : '' ?>">
               <a href="/intranet/bodega/agregar-producto">
                   <i class="fa-solid fa-shop"></i>
-                  <span>Agregar Productos</span>
+                  <span>Agregar Pedidos</span>
               </a>
           </li>
           <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/bodega/mis-productos' ? 'activo' : '' ?>">
               <a href="/intranet/bodega/mis-productos">
                   <i class="fa-solid fa-tags"></i>
-                  <span>Mis Productos</span>
+                  <span>Productos</span>
+              </a>
+          </li>-->
+          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/bodega/mis-productos' ? 'activo' : '' ?>">
+              <a href="/intranet/bodega/mis-productos">
+                  <i class="fa-solid fa-tags"></i>
+                  <span>Productos</span>
               </a>
           </li>
-          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/bodega/agregar-venta' ? 'activo' : '' ?>">
+          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/ventas/pedidos' ? 'activo' : '' ?>">
+              <a href="/intranet/ventas/pedidos">
+                  <i class="fa-solid fa-tags"></i>
+                  <span>Pedidos</span>
+              </a>
+          </li>
+          <!-- <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/bodega/agregar-venta' ? 'activo' : '' ?>">
               <a href="/intranet/bodega/agregar-venta">
                   <i class="fa-solid fa-shop"></i>
                   <span>Generar Venta</span>
@@ -72,7 +84,7 @@
                   <i class="fa-solid fa-tags"></i>
                   <span>Historial Producto</span>
               </a>
-          </li>
+          </li> -->
           <li>
               <a class="cerrar-sesion" href="javascript:void(0)">
                   <i class="fa-solid fa-arrow-right-from-bracket"></i>

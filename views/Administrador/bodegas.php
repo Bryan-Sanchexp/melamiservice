@@ -11,25 +11,25 @@
 <body>
     <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/helpers/dashboard.php") ?>
     <main class="contenido-pagina">
-        <h3 class="text-center titulo-principal-modulo mb-4">Bodegas</h3>
+        <h3 class="text-center titulo-principal-modulo mb-4">Colaboradores</h3>
         <div class="mb-3 text-end">
             <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#bodegaModal">
                 <i class="fa-solid fa-plus"></i>
-                Agregar Bodega
+                Agregar Colaborador
             </button>
         </div>
         <div class="contenido-tabla bg-white p-3">
             <div class="py-3">
-                <h4 class="titulo-principal-modulo"><i class="fa-solid fa-caret-right"></i> Lista de bodegas</h4>
+                <h4 class="titulo-principal-modulo"><i class="fa-solid fa-caret-right"></i> Lista de Colaboradores</h4>
             </div>
             <table class="table table-sm table-bordered" id="misBodegas">
                 <thead class="text-center">
                     <tr>
                         <th>N°</th>
-                        <th>RUC</th>
-                        <th>Bodega</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
                         <th>Direccion</th>
-                        <th>Propietario</th>
+                        <th>ROL</th>
                         <th>Correo</th>
                         <th>Teléfono</th>
                         <th>Celular</th>

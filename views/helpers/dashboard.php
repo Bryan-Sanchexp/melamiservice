@@ -47,7 +47,7 @@
           <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/administrador/bodegas' ? 'activo' : '' ?>">
               <a href="/intranet/administrador/bodegas">
                   <i class="fa-solid fa-shop"></i>
-                  <span>Bodegas</span>
+                  <span>Colaboradores</span>
               </a>
           </li>
           <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/administrador/categorias' ? 'activo' : '' ?>">

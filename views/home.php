@@ -12,17 +12,21 @@
 <body>
     <?php
     if ($data['rol'] == 'rol_bodega') {
-        require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/helpers/dashboardBodega.php");
+        require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/helpers/dashboardVentas.php");
     } else if ($data['rol'] == 'rol_administrador') {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/helpers/dashboard.php");
+    } else if($data['rol'] == 'rol_usuario'){
+        require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/helpers/dashboardMateriales.php");
     }
     ?>
     <main class="contenido-pagina">
         <?php
             if ($data['rol'] == 'rol_bodega') {
-                require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/Bodega/dashboard.php");
+                require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/helpers/dashboardHome.php");
             } else if ($data['rol'] == 'rol_administrador') {
                 require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/Administrador/dashboard.php");
+            }else if ($data['rol'] == 'rol_usuario') {
+                require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/helpers/dashboardHome.php");
             }
         ?>
     </main>
