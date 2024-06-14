@@ -1,7 +1,7 @@
 <?php
 use Controllers\Administrador\Bodegas;
 require_once '../../Controllers/Administrador/Bodegas.php';
-$cBodega = new Bodegas;
+$cBodega = new Tienda;
 switch ($_POST['accion']) {
     case 'agregar-bodega':
         $response = $cBodega->agregarBodega($_POST);
