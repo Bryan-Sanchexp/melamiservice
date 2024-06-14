@@ -15,6 +15,8 @@ switch ($_POST['acciones']) {
         $response = $cProducto->listaHistorialProducto($_POST['producto'] == "" ? 0 : $_POST['producto']);
         echo json_encode($response);
     break;
+
+    
 }
 
 ?>
