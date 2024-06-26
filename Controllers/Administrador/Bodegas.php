@@ -49,6 +49,6 @@ class Bodegas
         $modelBodega->setNombrePropietario($datos['nombre_propietario']);
         $contrasena = "bodegafast2023@";
         $agregarBodega = $modelBodega->agregar($datos['correo'],password_hash($contrasena,PASSWORD_DEFAULT));
-        return $agregarBodega ? ['success' => 'Bodega creada correctamente ' . ' la contraseña es ' . $contrasena] : ['error' => 'Error al crear la bodega'];
+        return $agregarBodega ? ['success' => 'Colaborador agregado correctamente ' . ' la contraseña es ' . $contrasena] : ['error' => 'Error al crear la bodega'];
     }
 }

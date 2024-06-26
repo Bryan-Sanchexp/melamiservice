@@ -50,7 +50,7 @@
                   <span>Colaboradores</span>
               </a>
           </li>
-          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/administrador/categorias' ? 'activo' : '' ?>">
+          <!-- <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/administrador/categorias' ? 'activo' : '' ?>">
               <a href="/intranet/administrador/categorias">
                   <i class="fa-solid fa-tags"></i>
                   <span>Categoría</span>
@@ -61,7 +61,7 @@
                   <i class="fa-solid fa-certificate"></i>
                   <span>Marcas</span>
               </a>
-          </li>
+          </li> -->
           <li>
               <a class="cerrar-sesion" href="javascript:void(0)">
                   <i class="fa-solid fa-arrow-right-from-bracket"></i>

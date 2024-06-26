@@ -42,7 +42,8 @@ function loadPage() {
             {
                 data: 'id',
                 render : function(data){
-                    return `<div class="d-flex justify-content-center" style="gap:5px;"><button class="btn btn-sm btn-outline-info p-1" data-bodega="${data}">
+                    return `<div class="d-flex justify-content-center" style="gap:5px;">
+                    <button class="btn btn-sm btn-outline-info p-1" data-bodega="${data}">
                         <small>
                         <i class="fas fa-pencil-alt"></i>
                         Editar

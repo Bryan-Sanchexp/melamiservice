@@ -62,15 +62,20 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
-                        <label for="validationCustom05" class="form-label">ROL </label>
+                        <label for="validationCustom05" class="form-label">DNI</label>
                         <input type="text" name="dni_propietario" class="form-control" id="validationCustom05" required>
                         <div class="invalid-feedback">
                             Please provide a valid zip.
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
-                        <label for="validationCustom05" class="form-label">DNI</label>
-                        <input type="text" name="nombre_propietario" class="form-control" id="validationCustom05" required>
+                        <label for="validationCustom05" class="form-label">ROL</label>
+                        <select name="nombre_propietario" class="form-select" id="validationCustom05" required>
+                            <option value="">Selecciona un rol</option>
+                            <option value="venta">Vendedor</option>
+                            <option value="logistica">Logistica</option>
+                            
+                        </select>
                         <div class="invalid-feedback">
                             Please provide a valid zip.
                         </div>
