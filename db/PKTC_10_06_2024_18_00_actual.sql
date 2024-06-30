@@ -68,7 +68,7 @@ CREATE TABLE `administrativos` (
 
 LOCK TABLES `administrativos` WRITE;
 /*!40000 ALTER TABLE `administrativos` DISABLE KEYS */;
-INSERT INTO `administrativos` VALUES (1,10,'Jean Pier','Carrasco Tamariz',NULL,NULL);
+INSERT INTO `administrativos` VALUES (1,10,'Ysabel Regina','Pujay Mateo',NULL,NULL);
 /*!40000 ALTER TABLE `administrativos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1487,3 +1487,75 @@ DELIMITER ;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2024-06-10  1:43:57
+
+-- Table structure for MATERIALES
+-- ----------------------------
+DROP TABLE IF EXISTS `materiales`;
+CREATE TABLE `materiales`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci NULL DEFAULT NULL,
+  `marca` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci NULL DEFAULT NULL,
+  `precio` int DEFAULT NULL,
+  `stock` int DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_spanish_ci ROW_FORMAT = DYNAMIC;
+	
+-- ----------------------------
+-- Records of materiales
+-- ----------------------------
+INSERT INTO `materiales` VALUES (1, 'Roble Rustico','Vesto', 246, 12);
+INSERT INTO `materiales` VALUES (2, 'Blanco Soft','Duratex', 168, 22);
+
+select * from materiales;
+
+-- ----------------------------
+-- Procedure structure for SP_C_T_MATERIALES
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `SP_C_T_MATERIALES`;
+delimiter ;;
+CREATE PROCEDURE `SP_C_T_MATERIALES`(IN _nombre VARCHAR(255),IN _marca VARCHAR(255), IN _precio INT, IN _stock INT)
+BEGIN
+	INSERT INTO materiales(nombre, marca, precio, stock) VALUES(_nombre, _marca, _precio, _stock);
+END
+;;
+delimiter ;
+
+
+
+
+
+-- ----------------------------
+-- Procedure structure for SP_D_T_MATERIALES
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `SP_D_T_MATERIALES`;
+delimiter ;;
+CREATE PROCEDURE `SP_D_T_MATERIALES`(IN _idMateriales INT)
+BEGIN
+    DELETE FROM materiales WHERE id = _idMateriales;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for SP_U_T_MATERIALES
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `SP_U_T_MATERIALES`;
+delimiter ;;
+CREATE PROCEDURE `SP_U_T_MATERIALES`(IN _idMATERIALES INT, IN _nombre VARCHAR(255),IN _marca VARCHAR(255), IN _precio INT, IN _stock INT)
+BEGIN
+	UPDATE materiales SET  nombre=_nombre WHERE id = _idMateriales;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for SP_R_T_MATERIALES
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `SP_R_T_MATERIALES`;
+delimiter ;;
+CREATE PROCEDURE `SP_R_T_MATERIALES`()
+BEGIN
+    SELECT id, nombre, marca, precio, stock FROM materiales;
+END
+;;
+delimiter ;
