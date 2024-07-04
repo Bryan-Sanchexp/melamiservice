@@ -35,7 +35,9 @@ function loadPage() {
             {
                 data: 'fecha'
             },
-            
+            {
+                data: 'estado'
+            },
             {
                 data: 'id',
                 render : function(data){

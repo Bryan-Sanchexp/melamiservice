@@ -43,7 +43,7 @@
                                         <form action="" id="frmLogin">
                                             <div class="form-outline mb-4">
                                                 <label class="form-label" for="form2Example17"><i class="fa-solid fa-user"></i> Usuario</label>
-                                                <input type="email" name="correo" id="form2Example17" class="form-control form-control-lg" value="bodegalucero@gmail.com" required />
+                                                <input type="email" name="correo" id="form2Example17" class="form-control form-control-lg" value="bercelia@gmail.com" required />
                                             </div>
 
                                             <div class="form-outline mb-4">

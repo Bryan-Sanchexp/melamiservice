@@ -2,6 +2,7 @@
 use Controllers\Ventas\Pedido;
 require_once '../../Controllers/Ventas/Pedido.php';
 $pedido = new Pedido;
+
 switch ($_POST['accion']) {
     case 'agregar-pedido':
         $response = $pedido->agregarPedido($_POST);

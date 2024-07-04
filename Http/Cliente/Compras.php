@@ -48,6 +48,7 @@ switch ($_POST['accion']) {
         }
         echo json_encode($resultado);
     break;
+    
 }
 
 ?>

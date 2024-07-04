@@ -11,7 +11,9 @@ $router->add("/intranet/bodega/producto/historial", "Controllers\Bodega\Producto
 $router->add("/intranet/bodega/producto/histoarial", "Controllers\Bodega\Producto@indexHistorialProducto");
 $router->add("/intranet/bodega/agregar-venta", "Controllers\Bodega\Venta@indexBodegaAgregarVenta");
 
-$router->add("/intranet/ventas/pedidos", "Controllers\Ventas\Pedido@indexPedidos");//Test
+$router->add("/intranet/ventas/pedidos", "Controllers\Ventas\Pedido@indexPedidos");
+$router->add("/intranet/ventas/agregar-pedido", "Controllers\Ventas\Pedido@indexAgregarPedido");
+$router->add("/intranet/inventario/materiales", "Controllers\Inventario\Materiales@indexMateriales");//Test
 
 $router->add("/intranet/bodega/reporte-ventas", "Controllers\Bodega\Venta@reporteVenta");
 $router->add("/intranet/bodega/mis-productos", "Controllers\Bodega\Producto@indexAdminMisProductos");

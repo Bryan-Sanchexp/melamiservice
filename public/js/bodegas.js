@@ -88,7 +88,7 @@ function loadPage() {
                 helper.sweetAlert("error",null,response.error);
             }
         } catch (error) {
-            helper.sweetAlert("error",null,"Error al agregar una bodega");
+            helper.sweetAlert("error",null,"Error al agregar al Colaborador");
         }
     })
     

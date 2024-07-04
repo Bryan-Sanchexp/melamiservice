@@ -6,6 +6,7 @@ class Helper{
     urlMarcas = window.location.origin + "/Http/Administrador/Marcas.php"
     urlCategorias = window.location.origin + "/Http/Administrador/Categorias.php"
     urlLogin = window.location.origin + "/Http/Usuario.php"
+    urlMateriales = window.location.origin + "/Http/Inventario/Materiales.php"
     urlVentasBodega = window.location.origin + "/Http/Bodega/Ventas.php"
     urlAccionHistorial = window.location.origin + "/Http/Bodega/Historial.php"
     urlDashboardBodega = window.location.origin + "/Http/Bodega/dashboard.php"
