@@ -15,7 +15,7 @@ function loadPage(){
             let datos = new FormData();
             datos.append("producto",valor);
             datos.append("accion",'ver-producto');
-            fetch(helper.urlVentasBodega,{
+            fetch(helper.urlVentasColaboradores,{
                 method: "POST",
                 body : datos
             }).then(response => response.json())
@@ -112,7 +112,7 @@ function loadPage(){
         let datos = new FormData();
         datos.append("cliente",$(this).val());
         datos.append("accion",'ver-cliente');
-        fetch(helper.urlVentasBodega,{
+        fetch(helper.urlVentasColaboradores,{
             method: "POST",
             body : datos
         }).then(response => response.json())
@@ -166,7 +166,7 @@ function loadPage(){
         let datos = new FormData();
         datos.append("accion","vericar-productos");
         datos.append("productos",JSON.stringify(productos));
-        fetch(helper.urlVentasBodega,{
+        fetch(helper.urlVentasColaboradores,{
             method: "POST",
             body : datos
         }).then(response => response.json())
@@ -212,7 +212,7 @@ function loadPage(){
         formData.append("detalle",JSON.stringify(productos));
         formData.append("envio",envio);
         formData.append('accion','agregar-venta');
-        fetch(helper.urlVentasBodega,{
+        fetch(helper.urlVentasColaboradores,{
             method: "POST",
             body : formData
         }).then(response => response.json())

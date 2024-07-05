@@ -44,8 +44,8 @@
                   <span>Inicio</span>
               </a>
           </li>
-          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/administrador/bodegas' ? 'activo' : '' ?>">
-              <a href="/intranet/administrador/bodegas">
+          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/administrador/colaboradores' ? 'activo' : '' ?>">
+              <a href="/intranet/administrador/colaboradores">
                   <i class="fa-solid fa-shop"></i>
                   <span>Colaboradores</span>
               </a>

@@ -16,7 +16,7 @@ class Login{
             header("location: /login");
         }
         switch ($data['rol']) {
-            case 'rol_bodega':
+            case 'rol_colaboradores':
                 header("location: /intranet/inicio");
             break;
             case 'rol_administrador':
@@ -43,7 +43,7 @@ class Login{
     }
     public function inicioIntranet()
     {
-        $rol = ['rol_bodega', 'rol_administrador', 'rol_usuario'];
+        $rol = ['rol_colaboradores', 'rol_administrador', 'rol_usuario'];
         $usuarioModel = new ModelUsuario();
         $data = $usuarioModel->obtenerDatosAutenticado();
         if(empty($data)){

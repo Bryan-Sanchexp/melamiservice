@@ -356,7 +356,7 @@ BEGIN
 		ELSE NULL
 	END AS idAccesoRol,
 	CASE 
-		WHEN b.id IS NOT NULL THEN 'rol_bodega'
+		WHEN b.id IS NOT NULL THEN 'rol_colaboradores'
 		WHEN a.id IS NOT NULL THEN 'rol_administrador'
 		WHEN u.id IS NOT NULL THEN 'rol_usuario'
 		ELSE NULL
@@ -374,7 +374,7 @@ BEGIN
 		ELSE NULL
 		END AS apellidos
  FROM acceso c 
- LEFT JOIN bodegas b 
+ LEFT JOIN colaboradores b 
  ON b.id_acceso = c.id 
  LEFT JOIN administrativos a 
  ON a.id_acceso = c.id 

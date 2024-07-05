@@ -32,11 +32,11 @@ class Ventas extends Conexion
         $stmt->close();
         return $response;
     }
-    public function verVentasPorBodega(int $idBodega,string $fechaInicio,string $fechaFin)
+    public function verVentasPorColaboradores(int $idColaboradores,string $fechaInicio,string $fechaFin)
     {
         $cn = $this->conectar();
         $stmt = $cn->prepare("CALL SP_R_T_VENTAS_BODEGAS(?,?,?)");
-        $stmt->bind_param("iss",$idBodega,$fechaInicio,$fechaFin);
+        $stmt->bind_param("iss",$idColaboradores,$fechaInicio,$fechaFin);
         $stmt->execute();
         $rs = $stmt->get_result();
         $result = [];

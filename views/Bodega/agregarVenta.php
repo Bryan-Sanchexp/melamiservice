@@ -12,7 +12,7 @@
 
 <body>
     <!-- Llamamos nuestro dashbord ya creado -->
-    <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/helpers/dashboardBodega.php") ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/helpers/dashboardolaboradores.php") ?>
     <main class="contenido-pagina">
         <div class="container">
             <div class="p-4 bg-white m-auto rounded" style="max-width: 700px;">

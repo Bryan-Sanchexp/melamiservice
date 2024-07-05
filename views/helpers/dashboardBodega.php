@@ -43,20 +43,20 @@
                   <span>Inicio</span>
               </a>
           </li>
-           <!--<li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/bodega/agregar-producto' ? 'activo' : '' ?>">
-              <a href="/intranet/bodega/agregar-producto">
+           <!--<li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/colaboradores/agregar-producto' ? 'activo' : '' ?>">
+              <a href="/intranet/colaboradores/agregar-producto">
                   <i class="fa-solid fa-shop"></i>
                   <span>Agregar Pedidos</span>
               </a>
           </li>
-          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/bodega/mis-productos' ? 'activo' : '' ?>">
-              <a href="/intranet/bodega/mis-productos">
+          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/colaboradores/mis-productos' ? 'activo' : '' ?>">
+              <a href="/intranet/colaboradores/mis-productos">
                   <i class="fa-solid fa-tags"></i>
                   <span>Productos</span>
               </a>
           </li>-->
-          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/bodega/mis-productos' ? 'activo' : '' ?>">
-              <a href="/intranet/bodega/mis-productos">
+          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/colaboradores/mis-productos' ? 'activo' : '' ?>">
+              <a href="/intranet/colaboradores/mis-productos">
                   <i class="fa-solid fa-tags"></i>
                   <span>Productos</span>
               </a>
@@ -67,20 +67,20 @@
                   <span>Pedidos</span>
               </a>
           </li>
-          <!-- <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/bodega/agregar-venta' ? 'activo' : '' ?>">
-              <a href="/intranet/bodega/agregar-venta">
+          <!-- <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/colaboradores/agregar-venta' ? 'activo' : '' ?>">
+              <a href="/intranet/colaboradores/agregar-venta">
                   <i class="fa-solid fa-shop"></i>
                   <span>Generar Venta</span>
               </a>
           </li>
-          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/bodega/mis-ventas' ? 'activo' : '' ?>">
-              <a href="/intranet/bodega/mis-ventas">
+          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/colaboradores/mis-ventas' ? 'activo' : '' ?>">
+              <a href="/intranet/colaboradores/mis-ventas">
                   <i class="fa-solid fa-tags"></i>
                   <span>Mis Ventas</span>
               </a>
           </li>
-          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/bodega/producto/historial' ? 'activo' : '' ?>">
-              <a href="/intranet/bodega/producto/historial">
+          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/colaboradores/producto/historial' ? 'activo' : '' ?>">
+              <a href="/intranet/colaboradores/producto/historial">
                   <i class="fa-solid fa-tags"></i>
                   <span>Historial Producto</span>
               </a>

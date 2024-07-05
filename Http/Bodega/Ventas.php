@@ -1,6 +1,6 @@
 <?php
-use Controllers\Bodega\Venta;
-require_once '../../Controllers/Bodega/Venta.php';
+use Controllers\Colaboradores\Venta;
+require_once '../../Controllers/Colaboradores/Venta.php';
 $cVentas = new Venta;
 switch ($_POST['accion']) {
     case 'ver-cliente':
@@ -16,11 +16,11 @@ switch ($_POST['accion']) {
         echo json_encode($response, JSON_FORCE_OBJECT);
     break;
     case 'agregar-venta':
-        $response = $cVentas->agregarVentasBodega($_POST);
+        $response = $cVentas->agregarVentasColaboradores($_POST);
         echo json_encode($response, JSON_FORCE_OBJECT);
     break;
     case 'ver-ventas':
-        $response = $cVentas->obtenerDatosVentasBodega($_POST['finicio'],$_POST['ffin']);
+        $response = $cVentas->obtenerDatosVentasColaboradores($_POST['finicio'],$_POST['ffin']);
         echo json_encode($response);
     break;
     case 'eliminar-venta':

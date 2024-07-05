@@ -15,12 +15,13 @@ class Usuario extends Conexion
     private int $estado;
     public $rolAdministrador = "rol_administrador";
     public $rolUsuario = "rol_usuario";
-    public $rolBodega = "rol_bodega";
+    public $rolColaboradores = "rol_colaboradores";
 
     public function iniciarSesion()
     {
         $cn = $this->conectar();
-        $stmt = $cn->prepare("SELECT c.id AS idAcceso,c.correo,c.contrasena,b.id AS bodega,u.id AS usuario, a.id AS administrador FROM acceso c LEFT JOIN bodegas b ON b.id_acceso = c.id LEFT JOIN administrativos a ON a.id_acceso = c.id LEFT JOIN usuarios u ON u.id_acceso = c.id WHERE c.correo = ? AND c.estado = 1 LIMIT 1");
+        $stmt = $cn->prepare("SELECT c.id AS idAcceso,c.correo,c.contrasena,b.id AS colaboradores,u.id AS usuario, a.id AS administrador 
+        FROM acceso c LEFT JOIN colaboradores b ON b.id_acceso = c.id LEFT JOIN administrativos a ON a.id_acceso = c.id LEFT JOIN usuarios u ON u.id_acceso = c.id WHERE c.correo = ? AND c.estado = 1 LIMIT 1");
         $stmt->bind_param("s",$this->correo);
         $stmt->execute();
         $resultado = $stmt->get_result();

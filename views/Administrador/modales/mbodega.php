@@ -9,14 +9,14 @@
                 <form class="row g-3 needs-validation" id="frmBodega">
                     <div class="col-md-6 col-12">
                         <label for="validationCustom01" class="form-label">Nombre</label>
-                        <input type="text" name="ruc" class="form-control" id="validationCustom01">
+                        <input type="text" name="nombre" class="form-control" id="validationCustom01" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
                     </div>
                     <div class="col-md-6 col-12">
                         <label for="validationCustom02" class="form-label">Apellidos</label>
-                        <input type="text" name="nombre" class="form-control" id="validationCustom02" required>
+                        <input type="text" name="apellidos" class="form-control" id="validationCustom02" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -49,7 +49,7 @@
                     </div>
                     <div class="col-6">
                         <label for="validationCustom03" class="form-label">Telefono</label>
-                        <input type="text" name="telefono" class="form-control" id="validationCustom03">
+                        <input type="text" name="telefono" class="form-control" id="validationCustom03" required>
                         <div class="invalid-feedback">
                             Please provide a valid city.
                         </div>
@@ -70,7 +70,7 @@
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="validationCustom05" class="form-label">ROL</label>
-                        <select name="nombre_propietario" class="form-select" id="validationCustom05" required>
+                        <select name="rol" class="form-select" id="validationCustom05" required>
                             <option value="">Selecciona un rol</option>
                             <option value="venta">Vendedor</option>
                             <option value="logistica">Logistica</option>

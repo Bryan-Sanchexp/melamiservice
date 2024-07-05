@@ -1,6 +1,6 @@
 <?php
 //Establecemos el nombre de espacio donde se trabaja
-namespace Controllers\Bodega;
+namespace Controllers\Colaboradores;
 //Requerimos los archivos necesarios para el funcionamiento
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Models/ProductoModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Models/MarcaModel.php';
@@ -23,7 +23,7 @@ class Producto {
             header("location: /login");
             die();
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             header("location: /intranet/inicio");
             die();
         }
@@ -35,7 +35,7 @@ class Producto {
         $listaMarcas = $marcaModel->mostrar();
         $listaCategorias = $categoriaModel->mostrar();
         //Requerimos la vista para que el usuario la visualice
-        require_once("views/Bodega/agregarProductos.php");
+        require_once("views/Colaboradores/agregarProductos.php");
     }
     //Definimos el método el cual mostrará la vista de los productos
     public function indexAdminMisProductos()
@@ -46,7 +46,7 @@ class Producto {
             header("location: /login");
             die();
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             header("location: /intranet/inicio");
             die();
         }
@@ -58,7 +58,7 @@ class Producto {
         $listaMarcas = $marcaModel->mostrar();
         $listaCategorias = $categoriaModel->mostrar();
         //Requerimos la vista para que el usuario la visualice
-        require_once("views/Bodega/misProductos.php");
+        require_once("views/Colaboradores/misProductos.php");
     }
     //Definimos el método el cual retornara los datos de los productos
     public function mostrarProductos()
@@ -75,7 +75,7 @@ class Producto {
         $modelProducto = new ProductoModel();
         //Seteamos los atributos que son privados a traves de de las funciones (set)
         $modelProducto->setId($idProducto);
-        $modelProducto->setIdBodega(1);
+        $modelProducto->setIdColaboradores(1);
         //Llamamos a la funcion de eliminar
         $resultado = $modelProducto->eliminar();
         //Verificamos si se elimino de nuestra db
@@ -95,12 +95,12 @@ class Producto {
         $modelUsuario = new UsuarioModel();
         //Seteamos los atributos que son privados a traves de de las funciones (set)
         $modelProducto->setNombre($datos['nombre']);
-        //Obtenemos el id de la bodega logeada
-        $datosBodega = $modelUsuario->obtenerDatosAutenticado();
-        if(empty($datosBodega)){
-            return ['error' => 'No se encontró la bodega'];
+        //Obtenemos el id de los colaboradores logeada
+        $datosColaboradores = $modelUsuario->obtenerDatosAutenticado();
+        if(empty($datosColaboradores)){
+            return ['error' => 'No se encontró al colaborador'];
         }
-        $modelProducto->setIdBodega($datosBodega['idAccesoRol']);
+        $modelProducto->setIdColaboradores($datosColaboradores['idAccesoRol']);
         $modelProducto->setDescripcion($datos['descripcion']);
         $modelProducto->setIdMarca(intval($datos['marca']));
         $modelProducto->setPrecioCompra(floatval($datos['precioCompra']));
@@ -140,14 +140,14 @@ class Producto {
         $modelUsuario = new UsuarioModel();
         //Seteamos los atributos que son privados a traves de de las funciones (set)
         $modelProducto->setNombre($datos['nombre']);
-        //Obtenemos el id de la bodega logeada
-        $datosBodega = $modelUsuario->obtenerDatosAutenticado();
-        if (empty($datosBodega)) {
-            return ['error' => 'No se encontró la bodega'];
+        //Obtenemos el id de la colaboradores logeada
+        $datosColaboradores = $modelUsuario->obtenerDatosAutenticado();
+        if (empty($datosColaboradores)) {
+            return ['error' => 'No se encontró al Colaborador'];
         }
-        $modelProducto->setIdBodega($datosBodega['idAccesoRol']);        
-        $modelProducto->setId($datosBodega['idProducto']);
-        $modelProducto->setIdBodega($datosBodega['id']);
+        $modelProducto->setIdColaboradores($datosColaboradores['idAccesoRol']);        
+        $modelProducto->setId($datosColaboradores['idProducto']);
+        $modelProducto->setIdColaboradores($datosColaboradores['id']);
         $modelProducto->setDescripcion($datos['descripcion']);
         $modelProducto->setIdMarca(intval($datos['marca']));
         $modelProducto->setPrecioCompra(floatval($datos['precioCompra']));
@@ -196,16 +196,16 @@ class Producto {
             header("location: /login");
             die();
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             header("location: /intranet/inicio");
             die();
         }
         $producto = new ProductoModel();
-        $producto->setIdBodega($data['idAccesoRol']);
+        $producto->setIdColaboradores($data['idAccesoRol']);
         $producto->setId(0);
-        //listamos los productos por bodega
-        $listaProductos = $producto->verProductosBodega();
-        require_once("views/Bodega/historialStockPrecio.php");
+        //listamos los productos por colaboradores
+        $listaProductos = $producto->verProductosColaboradores();
+        require_once("views/Colaboradores/historialStockPrecio.php");
     }
     public function obtenerProductoInformacion(int $productoId){
         $usuarioModel = new UsuarioModel();
@@ -213,14 +213,14 @@ class Producto {
         if (empty($data)) {
             return ['session' => true];
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             return ['session' => true];
         }
         $producto = new ProductoModel();
-        $producto->setIdBodega($data['idAccesoRol']);
+        $producto->setIdColaboradores($data['idAccesoRol']);
         $producto->setId($productoId);
-        //listamos los productos por bodega
-        $listaProductos = $producto->verProductosBodega();
+        //listamos los productos por Colaboradores
+        $listaProductos = $producto->verProductosColaboradores();
         return ['producto' => $listaProductos];
     }
     public function editarStockProductoHistorial(int $productoId,float $precio, float $cantidad, float $descuento){
@@ -229,7 +229,7 @@ class Producto {
         if (empty($data)) {
             return ['session' => true];
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             return ['session' => true];
         }
         $producto = new ProductoModel();
@@ -237,7 +237,7 @@ class Producto {
         $producto->setStock($cantidad);
         $producto->setPrecioVenta($precio);
         $producto->setDescuento($descuento);
-        //listamos los productos por bodega
+        //listamos los productos por Colaboradores
         return $producto->actualizarHistorial();
     }
     public function listaHistorialProducto(int $productoId) {
@@ -246,12 +246,12 @@ class Producto {
         if (empty($data)) {
             return ['session' => true];
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             return ['session' => true];
         }
         $producto = new ProductoModel();
         $producto->setId($productoId);
-        $producto->setIdBodega($data['idAccesoRol']);
+        $producto->setIdColaboradores($data['idAccesoRol']);
         return ['data' => $producto->obtenerHistorialProducto()];
     }
 }

@@ -1,7 +1,7 @@
 <?php
 //AUTOR : JEAN PIER CARRASCO TAMARIZ
 //Establecemos el nombre de espacio donde se trabaja
-namespace Controllers\Bodega;
+namespace Controllers\Colaboradores;
 //Requerimos los archivos necesarios para el funcionamiento
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Models/ProductoModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Models/UsuarioModel.php';
@@ -22,7 +22,7 @@ use Dompdf\Dompdf;
 //Definimos la clase Producto
 class Venta {
     //Definimos el método el cual mostrará la vista de agregar producto
-    public function indexBodegaAgregarVenta()
+    public function indexColaboradoresAgregarVenta()
     {
         $usuarioModel = new UsuarioModel();
         $data = $usuarioModel->obtenerDatosAutenticado();
@@ -30,7 +30,7 @@ class Venta {
             header("location: /login");
             die();
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             header("location: /intranet/inicio");
             die();
         }
@@ -42,15 +42,15 @@ class Venta {
         $listaClientes = $clientes->obtenerClientes();
         //Instanciamos el modelo producto
         $producto = new ProductoModel();
-        $producto->setIdBodega($data['idAccesoRol']);
+        $producto->setIdColaboradores($data['idAccesoRol']);
         $producto->setId(0);
-        //listamos los productos por bodega
-        $listaProductos = $producto->verProductosBodega();
+        //listamos los productos por Colaboradores
+        $listaProductos = $producto->verProductosColaboradores();
         //Requerimos la vista para que el usuario la visualice
-        require_once("views/Bodega/agregarVenta.php");
+        require_once("views/Colaboradores/agregarVenta.php");
     }
     //Definimos el método el cual mostrará la vista de los productos
-    public function indexBodegaMisVentas()
+    public function indexColaboradoresMisVentas()
     {
         $usuarioModel = new UsuarioModel();
         $data = $usuarioModel->obtenerDatosAutenticado();
@@ -58,13 +58,13 @@ class Venta {
             header("location: /login");
             die();
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             header("location: /intranet/inicio");
             die();
         }
-        require_once("views/Bodega/misVentas.php");
+        require_once("views/Colaboradores/misVentas.php");
     }
-    public function obtenerDatosVentasBodega(string $fechaInicio,string $fechaFin)
+    public function obtenerDatosVentasColaboradores(string $fechaInicio,string $fechaFin)
     {
         $usuarioModel = new UsuarioModel();
         $data = $usuarioModel->obtenerDatosAutenticado();
@@ -72,12 +72,12 @@ class Venta {
             header("location: /login");
             die();
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             header("location: /intranet/inicio");
             die();
         }
         $ventaModel = new VentasModel();
-        return ['data' => $ventaModel->verVentasPorBodega($data['idAccesoRol'],$fechaInicio,$fechaFin)];
+        return ['data' => $ventaModel->verVentasPorColaboradores($data['idAccesoRol'],$fechaInicio,$fechaFin)];
     }
     //Definimos el método el cual retornara los datos del cliente
     public function verInformacionCliente(int $idCliente)
@@ -97,13 +97,13 @@ class Venta {
         if (empty($data)) {
             return ['error' => 'Usuario no autenticado'];
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             return ['error' => 'Petición no permitida'];
         }
         $producto = new ProductoModel();
-        $producto->setIdBodega($data['idAccesoRol']);
+        $producto->setIdColaboradores($data['idAccesoRol']);
         $producto->setId($idProducto);
-        return ['success' => $producto->verProductosBodega()];
+        return ['success' => $producto->verProductosColaboradores()];
     }
     public function verificarProductosStock(array $productos)
     {
@@ -112,11 +112,11 @@ class Venta {
         if (empty($data)) {
             return ['session' => 'Usuario no autenticado'];
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             return ['session' => 'Petición no permitida'];
         }
         $producto = new ProductoModel();
-        $producto->setIdBodega($data['idAccesoRol']);
+        $producto->setIdColaboradores($data['idAccesoRol']);
         $idProductos = implode(",",array_column($productos,"id"));
         $productosDb = $producto->verificarProductosStock($idProductos);
         $response = ['success' => 'no hay inconvenientes'];
@@ -137,7 +137,7 @@ class Venta {
         return $response;
     }
     //Definimos el método para agregar un producto
-    public function agregarVentasBodega(array $datos)
+    public function agregarVentasColaboradores(array $datos)
     {
         //VEMOS SI EL USUARIO AUN SIGUE AUTENTICADO
         $usuarioModel = new UsuarioModel();
@@ -145,7 +145,7 @@ class Venta {
         if (empty($data)) {
             return ['session' => 'Usuario no autenticado'];
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             return ['session' => 'Petición no permitida'];
         }
         $clientes = new Clientes();
@@ -172,7 +172,7 @@ class Venta {
         $ventaModel->setCelular($datos['celular']);
         $ventaModel->setMetodoEnvio("DELIVERY");
         $ventaModel->setMetodoPago("EFECTIVO");
-        $ventaModel->setResponsableVenta("BODEGA");
+        $ventaModel->setResponsableVenta("COLABORADORES");
         $ventaModel->setEnvio($datos['envio']);
         $ventaModel->setSubtotal($subtotal);
         $ventaModel->setTotal($total);
@@ -212,8 +212,8 @@ class Venta {
             header("location: /login");
             die();
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
-            //Si no esta con el rol bodega que le mande al inicio
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
+            //Si no esta con el rol Colaboradores que le mande al inicio
             header("location: /intranet/inicio");
             die();
         }
@@ -223,7 +223,7 @@ class Venta {
         $fechaInicio = $_POST['fechaInicio'];
         $fechaFin = $_POST['fechaFin'];
         //se obtiene las ventas
-        $ventas = $ventaModel->verVentasPorBodega($data['idAccesoRol'],$fechaInicio,$fechaFin);
+        $ventas = $ventaModel->verVentasPorColaboradores($data['idAccesoRol'],$fechaInicio,$fechaFin);
         foreach ($ventas as $k=>$venta) {
             $ventaModel->setId($venta['id']);
             //se obtiene el detalle de las ventas
@@ -232,7 +232,7 @@ class Venta {
         //se incluye una vista html
         if($_POST['accion'] == "pdf"){
             ob_start();
-            include_once $_SERVER['DOCUMENT_ROOT'] . '/Views/Bodega/reportes/detalleVenta.php';
+            include_once $_SERVER['DOCUMENT_ROOT'] . '/Views/Colaboradores/reportes/detalleVenta.php';
             $html = ob_get_clean();
             $dompdf = new Dompdf();
             //Obtencion de la vista
@@ -249,7 +249,7 @@ class Venta {
             header("Pragma: no-cache"); 
             header("Expires: 0");
             ob_start();
-            include_once $_SERVER['DOCUMENT_ROOT'] . '/Views/Bodega/reportes/detalleVentaExcel.php';
+            include_once $_SERVER['DOCUMENT_ROOT'] . '/Views/Colaboradores/reportes/detalleVentaExcel.php';
             echo ob_get_clean();
         }
     }

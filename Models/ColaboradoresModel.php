@@ -7,25 +7,25 @@ require_once "Conexion.php";
 use Models\Conexion;
 
 
-class Bodega extends Conexion
+class Colaboradores extends Conexion
 {
     private int $id;
     private int $id_acceso;
-    private string $ruc;
     private string $nombre;
+    private string $apellidos;
     private string $direccion;
     private string $telefono;
     private string $celular;
     private string $localizacion;
     private string $dni_propietario;
-    private string $nombre_propietario;
+    private string $rol;
     private int $estado;
 
 
     public function mostrar()
     {
         $cn = $this->conectar();
-        $stmt = $cn->prepare("CALL SP_R_T_BODEGAS()");
+        $stmt = $cn->prepare("CALL SP_R_T_COLABORADORES()");
         $stmt->execute();
         $rs = $stmt->get_result();
         $result = [];
@@ -37,8 +37,8 @@ class Bodega extends Conexion
     public function agregar(string $correo,string $contrasena)
     {
         $cn = $this->conectar();
-        $stmt = $cn->prepare("CALL SP_C_T_BODEGAS(?,?,?,?,?,?,?,?,?,?)");
-        $stmt->bind_param("ssssssssss", $this->ruc, $this->nombre,$this->direccion,$this->telefono,$this->celular,$this->localizacion,$this->dni_propietario,$this->nombre_propietario,$contrasena,$correo);
+        $stmt = $cn->prepare("CALL SP_C_T_COLABORADORES(?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("ssssssssss", $this->nombre, $this->apellidos,$this->direccion,$this->telefono,$this->celular,$this->localizacion,$this->dni_propietario,$this->rol,$contrasena,$correo);
         $stmt->execute();
         $response = $stmt->error == '' ? true : false;
         $stmt->close();
@@ -97,17 +97,17 @@ class Bodega extends Conexion
     /**
      * Get the value of ruc
      */
-    public function getRuc(): string
+    public function getNombre(): string
     {
-        return $this->ruc;
+        return $this->nombre;
     }
 
     /**
      * Set the value of ruc
      */
-    public function setRuc(string $ruc): self
+    public function setNombre(string $nombre): self
     {
-        $this->ruc = $ruc;
+        $this->nombre = $nombre;
 
         return $this;
     }
@@ -115,17 +115,17 @@ class Bodega extends Conexion
     /**
      * Get the value of nombre
      */
-    public function getNombre(): string
+    public function getApellidos(): string
     {
-        return $this->nombre;
+        return $this->apellidos;
     }
 
     /**
      * Set the value of nombre
      */
-    public function setNombre(string $nombre): self
+    public function setApellidos(string $apellidos): self
     {
-        $this->nombre = $nombre;
+        $this->apellidos = $apellidos;
 
         return $this;
     }
@@ -223,17 +223,17 @@ class Bodega extends Conexion
     /**
      * Get the value of nombre_propietario
      */
-    public function getNombrePropietario(): string
+    public function getRol(): string
     {
-        return $this->nombre_propietario;
+        return $this->rol;
     }
 
     /**
      * Set the value of nombre_propietario
      */
-    public function setNombrePropietario(string $nombre_propietario): self
+    public function setRol(string $rol): self
     {
-        $this->nombre_propietario = $nombre_propietario;
+        $this->rol = $rol;
 
         return $this;
     }

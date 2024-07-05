@@ -10,7 +10,7 @@ use Models\Conexion;
 class Producto extends Conexion{
     //Definimos sus atributos de la clase
     private int $id;
-    private int $idBodega;
+    private int $idColaboradores;
     private int $idMarca;
     private string $idCategorias;
     private string $nombre;
@@ -30,7 +30,7 @@ class Producto extends Conexion{
         //Llamamos a nuestro SP
         $stmt = $cn->prepare("CALL SP_C_T_PRODUCTOS (?,?,?,?,?,?,?,?,?,?,?)");
         //Establecemos los parametros
-        $stmt->bind_param('iissdddddss',$this->idBodega,$this->idMarca,$this->nombre,$this->descripcion,$this->stock,$this->stockMinimo,$this->precioCompra,$this->precioVenta,$this->descuento,$this->img,$this->idCategorias);
+        $stmt->bind_param('iissdddddss',$this->idColaboradores,$this->idMarca,$this->nombre,$this->descripcion,$this->stock,$this->stockMinimo,$this->precioCompra,$this->precioVenta,$this->descuento,$this->img,$this->idCategorias);
         //Ejecutamos nuestro SP
         $stmt->execute();
         //Definimos si nos a dado error
@@ -65,7 +65,7 @@ class Producto extends Conexion{
     public function obtenerHistorialProducto() {
         $cn = $this->conectar();
         $stmt = $cn->prepare("CALL SP_R_T_PRODUCTOS_HISTORIAL(?,?)");
-        $stmt->bind_param("ii",$this->id,$this->idBodega);
+        $stmt->bind_param("ii",$this->id,$this->idColaboradores);
         $stmt->execute();
         $rs = $stmt->get_result();
         $result = [];
@@ -77,7 +77,7 @@ class Producto extends Conexion{
     public function obtenerProductosDashboard(string $fechaInicio,string $fechaFin) {
         $cn = $this->conectar();
         $stmt = $cn->prepare("CALL SP_DASHBOARD_PRODUCTOS_VENDIDOS(?,?,?)");
-        $stmt->bind_param("ssi", $fechaInicio, $fechaFin,$this->idBodega);
+        $stmt->bind_param("ssi", $fechaInicio, $fechaFin,$this->idColaboradores);
         $stmt->execute();
         $rs = $stmt->get_result();
         $result = [];
@@ -89,7 +89,7 @@ class Producto extends Conexion{
     public function obtenerVentasYearDashboard(string $fechaInicio,string $fechaFin) {
         $cn = $this->conectar();
         $stmt = $cn->prepare("CALL SP_DASHBOARD_PRODUCTOS_VENDIDOS_YEAR(?,?,?)");
-        $stmt->bind_param("ssi", $fechaInicio, $fechaFin,$this->idBodega);
+        $stmt->bind_param("ssi", $fechaInicio, $fechaFin,$this->idColaboradores);
         $stmt->execute();
         $rs = $stmt->get_result();
         $result = [];
@@ -106,7 +106,7 @@ class Producto extends Conexion{
         //Llamamos a nuestro SP
         $stmt = $cn->prepare("CALL SP_D_T_PRODUCTOS(?,?)");
         //Establecemos los parametros
-        $stmt->bind_param("ii",$this->id,$this->idBodega);
+        $stmt->bind_param("ii",$this->id,$this->idColaboradores);
         //Ejecutamos nuestro SP
         $stmt->execute();
         //Definimos si nos a dado error
@@ -124,7 +124,7 @@ class Producto extends Conexion{
         //Llamamos a nuestro SP
         $stmt = $cn->prepare("CALL SP_D_T_PRODUCTOS(?,?,?,?,?,?,?,?,?,?,?,?)");
         //Establecemos los parametros
-        $stmt->bind_param("iiissdddddss",$this->id,$this->idBodega, $this->idMarca, $this->nombre, $this->descripcion, $this->stock, $this->stockMinimo, $this->precioCompra, $this->precioVenta, $this->descuento, $this->img, $this->idCategorias);
+        $stmt->bind_param("iiissdddddss",$this->id,$this->idColaboradores, $this->idMarca, $this->nombre, $this->descripcion, $this->stock, $this->stockMinimo, $this->precioCompra, $this->precioVenta, $this->descuento, $this->img, $this->idCategorias);
         //Ejecutamos nuestro SP
         $stmt->execute();
         //Definimos si nos a dado error
@@ -171,11 +171,11 @@ class Producto extends Conexion{
         $stmt->close();
         return $result;
     }
-    public function verProductosBodega()
+    public function verProductosColaboradores()
     {
         $cn = $this->conectar();
         $stmt = $cn->prepare("CALL SP_R_T_PRODUCTOS_BODEGA(?,?)");
-        $stmt->bind_param("ii",$this->idBodega,$this->id);
+        $stmt->bind_param("ii",$this->idColaboradores,$this->id);
         $stmt->execute();
         $rs = $stmt->get_result();
         $result = [];
@@ -188,7 +188,7 @@ class Producto extends Conexion{
     {
         $cn = $this->conectar();
         $stmt = $cn->prepare("CALL SP_R_T_PRODUCTOS_VERIFICAR_STOCK(?,?)");
-        $stmt->bind_param("is",$this->idBodega,$productos);
+        $stmt->bind_param("is",$this->idColaboradores,$productos);
         $stmt->execute();
         $rs = $stmt->get_result();
         $result = [];
@@ -222,9 +222,9 @@ class Producto extends Conexion{
     {
         $this->idCategorias = $idCategorias;
     }
-    public function setIdBodega(int $idBodega)
+    public function setIdColaboradores(int $idColaboradores)
     {
-        $this->idBodega = $idBodega;
+        $this->idColaboradores = $idColaboradores;
     }
     public function setIdMarca(int $idMarca)
     {
@@ -272,11 +272,11 @@ class Producto extends Conexion{
     }
 
     /**
-     * Get the value of idBodega
+     * Get the value of idColaboradores
      */
-    public function getIdBodega(): int
+    public function getIdColaboradores(): int
     {
-        return $this->idBodega;
+        return $this->idColaboradores;
     }
 }
 

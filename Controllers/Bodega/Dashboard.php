@@ -1,17 +1,18 @@
 <?php
 //Establecemos el nombre de espacio donde se trabaja
-namespace Controllers\Bodega;
+namespace Controllers\Colaboradores;
 //Requerimos los archivos necesarios para el funcionamiento
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Models/CategoriaModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Models/UsuarioModel.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/Models/BodegaModel.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Models/colaboradoresModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Models/ProductoModel.php';
 
 //Usamos las clases y lo renombramos
 
+use Colaborador;
 use Models\Categoria as CategoriaModel;
 use Models\Usuario as UsuarioModel;
-use Models\Bodega as BodegaModel;
+use Models\Colaboradores as ColaboradoresModel;
 use Models\Producto as ProductoModel;
 
 class Dashboard {
@@ -23,11 +24,11 @@ class Dashboard {
         if (empty($data)) {
             return ['session' => true];
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             return ['session' => true];
         }
         $productoModel = new ProductoModel();
-        $productoModel->setIdBodega($data['idAccesoRol']);
+        $productoModel->setIdColaboradores($data['idAccesoRol']);
         return $productoModel->obtenerProductosDashboard($fechaInicio,$fechaFin);
     }
     public function obtenerProductosMasCategoria(string $fechaInicio, string $fechaFin)
@@ -37,7 +38,7 @@ class Dashboard {
         if (empty($data)) {
             return ['session' => true];
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             return ['session' => true];
         }
         $categoriaModel = new CategoriaModel();
@@ -50,11 +51,11 @@ class Dashboard {
         if (empty($data)) {
             return ['session' => true];
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             return ['session' => true];
         }
-        $bodegaModel = new BodegaModel();
-        return $bodegaModel->rankingDashboard($fechaInicio,$fechaFin);
+        $colaboradoresModel = new ColaboradoresModel();
+        return $colaboradoresModel->rankingDashboard($fechaInicio,$fechaFin);
     }
     public function obtenerVentas($fechaInicio,$fechaFin)
     {
@@ -63,11 +64,11 @@ class Dashboard {
         if (empty($data)) {
             return ['session' => true];
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             return ['session' => true];
         }
         $productoModel = new ProductoModel();
-        $productoModel->setIdBodega($data['idAccesoRol']);
+        $productoModel->setIdColaboradores($data['idAccesoRol']);
         return $productoModel->obtenerVentasYearDashboard($fechaInicio,$fechaFin);
     }
 }

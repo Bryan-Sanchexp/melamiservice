@@ -1,6 +1,6 @@
 <?php
-use Controllers\Bodega\Producto;
-require_once '../../Controllers/Bodega/Producto.php';
+use Controllers\colaboradores\Producto;
+require_once '../../Controllers/Bodegcolaboradoresa/Producto.php';
 $cProducto = new Producto;
 switch ($_POST['acciones']) {
     case 'solicitar-stock':

@@ -18,7 +18,7 @@ class Pedido
             header("location: /login");
             die();
         }
-        if (!in_array($data['rol'], [$usuarioModel->rolBodega])) {
+        if (!in_array($data['rol'], [$usuarioModel->rolColaboradores])) {
             header("location: /intranet/inicio");
             die();
         }

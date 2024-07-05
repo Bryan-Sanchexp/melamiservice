@@ -40,7 +40,7 @@ function loadPage() {
                 data: 'id',
                 render : function(data){
                     return `
-                        <button class="btn btn-sm btn-outline-danger p-1" data-bodega="${data}">
+                        <button class="btn btn-sm btn-outline-danger p-1" data-Colaboradores="${data}">
                             <small>    
                             <i class="fas fa-trash-alt"></i>
                                 Eliminar

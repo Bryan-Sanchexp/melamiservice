@@ -1,6 +1,6 @@
 <?php
-use Controllers\Bodega\Producto;
-require_once '../../Controllers/Bodega/Producto.php';
+use Controllers\Colaboradores\Producto;
+require_once '../../Controllers/Colaboradores/Producto.php';
 $cProducto = new Producto;
 switch ($_POST['accion']) {
     case 'agregar-producto':

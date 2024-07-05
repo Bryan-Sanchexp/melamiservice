@@ -56,7 +56,7 @@
             </table>
         </div>
     </main>
-    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/Views/Bodega/modales/editarStock.php'); ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'] . '/Views/Colaboradores/modales/editarStock.php'); ?>
 </body>
 
 </html>

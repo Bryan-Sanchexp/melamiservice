@@ -1,3 +1,3 @@
 <?php
-define("URL","http://bodegafast.com");
+define("URL","http://melamiservis.com");
 ?>

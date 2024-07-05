@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/helpers/dashboardBodega.php") ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/helpers/dashboardColaboradores.php") ?>
     <main class="contenido-pagina">
         <h3 class="text-center titulo-principal-modulo mb-4">Mis productos</h3>
         <div class="contenido-tabla bg-white p-3">

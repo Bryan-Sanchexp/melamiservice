@@ -3,10 +3,10 @@ function loadPage() {
     const configTablaProductos = {
         ...helper.configuracionDataTable,
         "ajax": {
-            "url": helper.urlBodegas,
+            "url": helper.urlColaboradores,
             "method" : "POST",
             "data": function ( d ) {
-                d.accion = 'ver-bodegas';
+                d.accion = 'ver-colaboradores';
             }
         },
         columns: [
@@ -17,16 +17,16 @@ function loadPage() {
                 }
             },
             {
-                data: 'ruc'
+                data: 'nombre'
             },
             {
-                data: 'nombre'
+                data: 'apellidos'
             },
             {
                 data: 'direccion'
             },
             {
-                data: 'nombre_propietario'
+                data: 'rol'
             },
             {
                 data: 'correo'
@@ -43,13 +43,13 @@ function loadPage() {
                 data: 'id',
                 render : function(data){
                     return `<div class="d-flex justify-content-center" style="gap:5px;">
-                    <button class="btn btn-sm btn-outline-info p-1" data-bodega="${data}">
+                    <button class="btn btn-sm btn-outline-info p-1" data-colaboradores="${data}">
                         <small>
                         <i class="fas fa-pencil-alt"></i>
                         Editar
                         </small>
                     </button>
-                    <button class="btn btn-sm btn-outline-danger p-1" data-bodega="${data}">
+                    <button class="btn btn-sm btn-outline-danger p-1" data-colaboradores="${data}">
                         <small>    
                         <i class="fas fa-trash-alt"></i>
                             Eliminar
@@ -78,9 +78,9 @@ function loadPage() {
         //     text: 'El correo electrónico es invalido'
         // });
         let datos = new FormData(this);
-        datos.append("accion","agregar-bodega");
+        datos.append("accion","agregar-colaboradores");
         try {
-            const response = await helper.peticionHttp(helper.urlBodegas,"POST",datos);
+            const response = await helper.peticionHttp(helper.urlColaboradores,"POST",datos);
             if(response.success){
                 modalBoxBodega.hide();
                 datatableMisBodegas.ajax.reload();

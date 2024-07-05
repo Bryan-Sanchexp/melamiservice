@@ -4,7 +4,7 @@
 <head>
     <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/helpers/headerDashboard.php"); ?>
     <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/Views/helpers/headerDatatable.php"); ?>
-    <script src="<?php echo URL . '/Public/js/bodegas.js' ?>"></script>
+    <script src="<?php echo URL . '/Public/js/colaboradores.js' ?>"></script>
     <title>Categoría de productos</title>
 </head>
 

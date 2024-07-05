@@ -1,6 +1,6 @@
 <?php
-use Controllers\Bodega\Dashboard;
-require_once '../../Controllers/Bodega/Dashboard.php';
+use Controllers\Colaboradores\Dashboard;
+require_once '../../Controllers/Colaboradores/Dashboard.php';
 $cDashboard = new Dashboard;
 switch ($_POST['acciones']) {
     case 'solicitar-datos':
@@ -8,7 +8,7 @@ switch ($_POST['acciones']) {
         $fechaFinAtras = date('Y-m-d',strtotime($_POST['fFin'] . ' - 1 year'));
         $response = [
             'productosVendidos' => $cDashboard->obtenerProductosMasVendidos($_POST['fInicio'],$_POST['fFin']),
-            'rankingBodegas' => $cDashboard->obtenerRanking($_POST['fInicio'],$_POST['fFin']),
+            'rankingColaboradores' => $cDashboard->obtenerRanking($_POST['fInicio'],$_POST['fFin']),
             'productosVendidosCategoria' => $cDashboard->obtenerProductosMasCategoria($_POST['fInicio'],$_POST['fFin']),
             'ventasRealizadas' => [
                 'year1' => $cDashboard->obtenerVentas($_POST['fInicio'],$_POST['fFin']),

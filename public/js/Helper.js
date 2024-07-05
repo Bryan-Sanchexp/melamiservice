@@ -1,15 +1,15 @@
 class Helper{
 
-    urlProductos = window.location.origin + "/Http/Bodega/productos.php"
-    urlBodegas = window.location.origin + "/Http/Administrador/Bodega.php"
+    urlProductos = window.location.origin + "/Http/Colaboradores/productos.php"
+    urlColaboradores = window.location.origin + "/Http/Administrador/Colaboradores.php"
     urlPedidos = window.location.origin + "/Http/Ventas/Pedidos.php"
     urlMarcas = window.location.origin + "/Http/Administrador/Marcas.php"
     urlCategorias = window.location.origin + "/Http/Administrador/Categorias.php"
     urlLogin = window.location.origin + "/Http/Usuario.php"
     urlMateriales = window.location.origin + "/Http/Inventario/Materiales.php"
-    urlVentasBodega = window.location.origin + "/Http/Bodega/Ventas.php"
-    urlAccionHistorial = window.location.origin + "/Http/Bodega/Historial.php"
-    urlDashboardBodega = window.location.origin + "/Http/Bodega/dashboard.php"
+    urlVentasColaboradores = window.location.origin + "/Http/Colaboradores/Ventas.php"
+    urlAccionHistorial = window.location.origin + "/Http/Colaboradores/Historial.php"
+    urlDashboardColaboradores = window.location.origin + "/Http/Colaboradores/dashboard.php"
 
 
     peticionHttp(url,metodo,datos){

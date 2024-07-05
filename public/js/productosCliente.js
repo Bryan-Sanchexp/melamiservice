@@ -36,7 +36,7 @@ function loadPage(){
                     <p class="mb-0">
                         <strong class="bodega-texto">
                             <i class="fas fa-store-alt"></i>
-                            ${producto.bodega}
+                            ${producto.Colaboradores}
                         </strong>
                     </p>
                     <p class="mb-2">

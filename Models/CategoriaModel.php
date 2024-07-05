@@ -68,11 +68,11 @@ class Categoria extends Conexion
         $stmt->close();
         return $result;
     }
-    public function obtenerProductosCategoriaDashboard(string $fechaInicio,string $fechaFin, int $idBodega)
+    public function obtenerProductosCategoriaDashboard(string $fechaInicio,string $fechaFin, int $idColaboradores)
     {
         $cn = $this->conectar();
         $stmt = $cn->prepare("CALL SP_DASHBOARD_PRODUCTOS_VENDIDOS_CATEGORIA(?,?,?)");
-        $stmt->bind_param("ssi", $fechaInicio, $fechaFin,$idBodega);
+        $stmt->bind_param("ssi", $fechaInicio, $fechaFin,$idColaboradores);
         $stmt->execute();
         $rs = $stmt->get_result();
         $result = [];

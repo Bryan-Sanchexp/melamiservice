@@ -129,7 +129,7 @@ function loadPage() {
         datos.append("fFin",txtFechaFin.value);
         datos.append("acciones",'solicitar-datos');
         try {
-            const response = await fetch(helper.urlDashboardBodega,{
+            const response = await fetch(helper.urlDashboardColaboradores,{
                 method:"POST",
                 body : datos
             }).then(result => result.json());
