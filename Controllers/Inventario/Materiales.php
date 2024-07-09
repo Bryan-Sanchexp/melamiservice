@@ -56,5 +56,34 @@ class Materiales {
         $materialesModel->setId($id);
         return $materialesModel->eliminar();
     }
+
+    public function obtenerUnMaterial(int $id){
+        $materialesModel = new MaterialesModel();
+        $materialesModel->setId($id);
+        return $materialesModel->verMaterial();
+    }
+
+    public function verificarMaterialStock(array $materiales)
+    {
+        $materialesModel = new MaterialesModel();
+        $idMateriales = implode(",",array_column($materiales,"id"));
+        $materialesDb = $materialesModel->verificarStock($idMateriales);
+        $response = ['success' => 'no hay inconvenientes'];
+        foreach ($$materiales as $mt) {
+            $material = array_filter($materialesDb,function($v)use($mt){
+                return $v['id'] == $mt['id'];
+            });
+            if(empty($material)){
+                $response = ['error' => 'El material ' . $mt['nombre'] . ' no se a encontrado, posiblemente haya sido eliminado'];
+                break;
+            }
+            $kp = key($material);
+            if(intval($mt['cantidad']) > intval($materialesDb[$kp]['stock'])){
+                $response = ['error' => 'El material ' . $mt['nombre'] . ' no debe superar la cantidad de ' . intval($materialesDb[$kp]['stock']) . ' unidades'];
+                break;
+            }
+        }
+        return $response;
+    }
     
 }

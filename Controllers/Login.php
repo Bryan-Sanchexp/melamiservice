@@ -24,6 +24,7 @@ class Login{
             break;
             case 'rol_usuario':
                 header("location: /intranet/inicio");
+                header("location: /intranet/inicio");
             break;
         }
     }

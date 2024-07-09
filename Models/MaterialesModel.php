@@ -59,6 +59,32 @@ class Materiales extends Conexion
         return $response;
     }
     
+    public function verMaterial(){
+        $cn = $this->conectar();
+        $stmt = $cn->prepare("CALL SP_R_T_MATERIALES_BY_ID(?)");
+        $stmt->bind_param("i", $this->id);
+        $stmt->execute();
+        $rs = $stmt->get_result();
+        $result = [];
+        while ($result[] = $rs->fetch_assoc());
+        array_pop($result);
+        $stmt->close();
+        return $result;
+    }
+
+    public function verificarStock(string $material)
+    {
+        $cn = $this->conectar();
+        $stmt = $cn->prepare("CALL SP_R_T_PRODUCTOS_VERIFICAR_STOCK(?,?)");
+        $stmt->bind_param("i",$this->$material);
+        $stmt->execute();
+        $rs = $stmt->get_result();
+        $result = [];
+        while ($result[] = $rs->fetch_assoc());
+        array_pop($result);
+        $stmt->close();
+        return $result;
+    }
    
     /**
      * Get the value of id

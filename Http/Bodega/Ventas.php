@@ -28,5 +28,3 @@ switch ($_POST['accion']) {
         // echo json_encode($response);
     break;
 }
-
-?>

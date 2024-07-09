@@ -85,6 +85,7 @@
                   <span>Historial Producto</span>
               </a>
           </li> -->
+          </li> -->
           <li>
               <a class="cerrar-sesion" href="javascript:void(0)">
                   <i class="fa-solid fa-arrow-right-from-bracket"></i>

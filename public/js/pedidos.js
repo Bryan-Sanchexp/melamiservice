@@ -1,5 +1,7 @@
 function loadPage() {
     let helper = new Helper();
+    const txtFechaFin = document.querySelector("#txtFechaFin");
+    const txtFechaInicio = document.querySelector("#txtFechaInicio");
     
     const configTablaProductos = {
         ...helper.configuracionDataTable,
@@ -35,12 +37,14 @@ function loadPage() {
             {
                 data: 'fecha'
             },
-            
+            {
+                data: 'estado'
+            },
             {
                 data: 'id',
                 render : function(data){
                     return `
-                        <button class="btn btn-sm btn-outline-danger p-1" data-Colaboradores="${data}">
+                        <button class="btn btn-sm btn-outline-danger p-1" data-bodega="${data}">
                             <small>    
                             <i class="fas fa-trash-alt"></i>
                                 Eliminar
@@ -86,7 +90,10 @@ function loadPage() {
     btnModalBodega.onclick = e => document.querySelector("#btnSubmitFrmBodega").click();
     frmBodega.addEventListener("submit",async function(e){
         e.preventDefault();
-       
+        // return Swal.fire({
+        //     icon: 'error',
+        //     text: 'El correo electrónico es invalido'
+        // });
         let datos = new FormData(this);
        
         datos.append("accion","agregar-pedido");
@@ -104,5 +111,24 @@ function loadPage() {
         }
     })
     
+    function reporte(e) {
+        const formulario = document.createElement("form");
+        formulario.innerHTML = `
+        <input value="${txtFechaFin.value}" name="fechaFin"/>
+        <input value="${txtFechaInicio.value}" name="fechaInicio"/>
+        <input value="${e.target.dataset.accion}" name="accion"/>
+        `
+        formulario.method = "POST";
+        formulario.action = window.location.origin + "/intranet/pedidos/reporte-ventas";
+        const submit = document.createElement("input");
+        submit.type = "submit";
+        formulario.append(submit);
+        document.body.append(formulario);
+        submit.click();
+        document.body.removeChild(formulario);
+    }
+    document.querySelector("#btnReporteDetalle").onclick = reporte;
+    document.querySelector("#btnReporteDetalleExcel").onclick = reporte;
+
 }
 window.addEventListener("DOMContentLoaded",loadPage);

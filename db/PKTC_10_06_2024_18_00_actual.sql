@@ -1541,7 +1541,7 @@ delimiter ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `SP_U_T_MATERIALES`;
 delimiter ;;
-CREATE PROCEDURE `SP_U_T_MATERIALES`(IN _idMATERIALES INT, IN _nombre VARCHAR(255),IN _marca VARCHAR(255), IN _precio INT, IN _stock INT)
+CREATE PROCEDURE `SP_U_T_MATERIALES`(IN _idMateriales INT, IN _nombre VARCHAR(255),IN _marca VARCHAR(255), IN _precio INT, IN _stock INT)
 BEGIN
 	UPDATE materiales SET  nombre=_nombre WHERE id = _idMateriales;
 END

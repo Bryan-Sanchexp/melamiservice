@@ -16,6 +16,11 @@ class Pedido extends Conexion
     private string $telefono;
     private string $correo;
     private string $fecha;
+    private float $subtotal;
+    private float $total;
+    private float $igv;
+    private string $estado;
+    private string $detallePedido;
 
     public function mostrar()
     {
@@ -34,10 +39,10 @@ class Pedido extends Conexion
     public function agregar()
     {
         $cn = $this->conectar();
-        $stmt = $cn->prepare("CALL SP_C_T_PEDIDOS(?,?,?,?,?,?)");
-        $stmt->bind_param("ssssss", $this->cliente,$this->ciudad,$this->direccion,$this->telefono,$this->correo,$this->fecha);
+        $stmt = $cn->prepare("CALL SP_C_T_PEDIDOS(?,?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("ssssssdddss", $this->cliente,$this->ciudad,$this->direccion,$this->telefono,$this->correo,$this->fecha,$this->subtotal,$this->total,$this->igv,$this->estado,$this->detallePedido);
         $stmt->execute();
-        $response = $stmt->error == '' ? ['success' => 'Pedido agregado correctamente'] : ['error' => 'El pedido no se agregó'];
+        $response = $stmt->error == '' ? true : false;
         $stmt->close();
         return $response;
     }
@@ -128,5 +133,64 @@ class Pedido extends Conexion
         return $this->fecha;
     }
 
+    public function getSubtotal(): float
+    {
+        return $this->subtotal;
+    }
+
+    public function setSubtotal(float $subtotal): self
+    {
+        $this->subtotal = $subtotal;
+
+        return $this;
+    }
+
+    public function getIgv(): float
+    {
+        return $this->igv;
+    }
+
+    public function setIgv(float $igv): self
+    {
+        $this->igv = $igv;
+
+        return $this;
+    }
+
+    public function getTotal(): float
+    {
+        return $this->total;
+    }
+
+    public function setTotal(float $total): self
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    public function getEstado(): string
+    {
+        return $this->estado;
+    }
+
+    public function setEstado(string $estado): self
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    public function getDetallePedido(): string
+    {
+        return $this->detallePedido;
+    }
+
+    public function setDetallePedido(string $detallePedido): self
+    {
+        $this->detallePedido = $detallePedido;
+
+        return $this;
+    }
     
 }

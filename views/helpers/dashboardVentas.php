@@ -47,6 +47,12 @@
                   <span>Pedidos</span>
               </a>
           </li>
+          <li class="<?php echo $_SERVER['REQUEST_URI'] == '/intranet/ventas/agregar-pedido' ? 'activo' : '' ?>">
+              <a href="/intranet/ventas/agregar-pedido">
+                  <i class="fa-solid fa-tags"></i>
+                  <span>Agregar Pedido</span>
+              </a>
+          </li>
           <li>
               <a class="cerrar-sesion" href="javascript:void(0)">
                   <i class="fa-solid fa-arrow-right-from-bracket"></i>

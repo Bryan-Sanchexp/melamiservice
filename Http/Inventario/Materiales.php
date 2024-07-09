@@ -15,4 +15,8 @@ switch ($_POST['accion']) {
         $response = $materiales->eliminarMateriales($_POST["idMateriales"]);
         echo json_encode($response);
         break;
-}                                                                                           
+    case 'ver-material':
+        $response = $materiales->obtenerUnMaterial($_POST["idMaterial"]);
+        echo json_encode($response, JSON_FORCE_OBJECT);
+        break;
+}

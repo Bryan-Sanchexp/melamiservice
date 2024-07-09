@@ -49,21 +49,21 @@
                     </div>
                     <div class="col-6">
                         <label for="validationCustom03" class="form-label">Telefono</label>
-                        <input type="text" name="telefono" class="form-control" id="validationCustom03" required>
+                        <input type="text" name="telefono" class="form-control" id="validationCustom03" maxlength="7" required>
                         <div class="invalid-feedback">
                             Please provide a valid city.
                         </div>
                     </div>
                     <div class="col-6">
                         <label for="validationCustom03" class="form-label">Celular</label>
-                        <input type="text" name="celular" class="form-control" id="validationCustom03" required>
+                        <input type="text" name="celular" class="form-control" id="validationCustom03" maxlength="9" required>
                         <div class="invalid-feedback">
                             Please provide a valid city.
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <label for="validationCustom05" class="form-label">DNI</label>
-                        <input type="text" name="dni_propietario" class="form-control" id="validationCustom05" required>
+                        <input type="text" name="dni_propietario" class="form-control" id="validationCustom05" maxlength="8" required>
                         <div class="invalid-feedback">
                             Please provide a valid zip.
                         </div>
