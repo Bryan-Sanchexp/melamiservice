@@ -29,6 +29,7 @@
                         <th>Nombre</th>
                         <th>Apellidos</th>
                         <th>Direccion</th>
+                        <th>Localizacion</th>
                         <th>ROL</th>
                         <th>Correo</th>
                         <th>Teléfono</th>
@@ -42,6 +43,7 @@
         </div>
     </main>
     <?php require_once 'modales/mbodega.php'; ?>
+    <?php require_once 'modales/editarColaborador.php'; ?>
 
 </body>
 

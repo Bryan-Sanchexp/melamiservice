@@ -51,8 +51,8 @@ class Materiales extends Conexion
     public function actualizar()
     {
         $cn = $this->conectar();
-        $stmt = $cn->prepare("CALL SP_U_T_MATERIALES(?,?,?,?,?)");
-        $stmt->bind_param("issss", $this->id, $this->nombre,$this->marca, $this->precio, $this->stock);
+        $stmt = $cn->prepare("CALL SP_U_T_MATERIALES(?,?,?,?)");
+        $stmt->bind_param("isss", $this->id, $this->nombre,$this->marca, $this->precio);
         $stmt->execute();
         $response = $stmt->error == '' ? ['success' => 'Material actualizado correctamente'] : ['error' => 'El material no se actualizó'];
         $stmt->close();

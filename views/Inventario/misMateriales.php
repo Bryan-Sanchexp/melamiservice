@@ -28,10 +28,10 @@
                 <thead class="text-center">
                     <tr>
                         <th>N°</th>
-                        <th>Nombre Materiales</th>
-                        <th>Nombre Marca</th>
-                        <th>Nombre Precio</th>
-                        <th>Nombre Stock</th>
+                        <th>Material</th>
+                        <th>Marca</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -41,6 +41,7 @@
         </div>
     </main>
     <?php require_once 'modales/mMateriales.php'; ?>
+    <?php require_once 'modales/editarMateriales.php'; ?>
 </body>
 
 </html>

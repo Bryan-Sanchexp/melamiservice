@@ -51,4 +51,11 @@ class Colaboradores
         $agregarColaboradores = $modelColaboradores->agregar($datos['correo'],password_hash($contrasena,PASSWORD_DEFAULT));
         return $agregarColaboradores ? ['success' => 'Colaborador agregado correctamente ' . ' la contraseña es ' . $contrasena] : ['error' => 'Error al agregar al colaborador'];
     }
+
+    public function eliminarColaborador(int $id)
+    {
+        $modelColaboradores = new ColaboradoresModel();
+        $modelColaboradores->setId($id);
+        return $modelColaboradores->eliminar();
+    }
 }

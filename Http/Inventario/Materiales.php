@@ -19,4 +19,8 @@ switch ($_POST['accion']) {
         $response = $materiales->obtenerUnMaterial($_POST["idMaterial"]);
         echo json_encode($response, JSON_FORCE_OBJECT);
         break;
+    case 'actualizar-material':
+        $response = $materiales->actualizarMaterial($_POST["idMateriales"],$_POST["editarNombre"],$_POST["editarMarca"],$_POST["editarPrecio"]);
+        echo json_encode($response);
+        break;
 }

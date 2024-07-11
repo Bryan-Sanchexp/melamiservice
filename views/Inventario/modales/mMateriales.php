@@ -9,7 +9,7 @@
                 <form class="row g-3 needs-validation" id="frmMateriales">
                     <div class="col-12">
                         <label for="validationCustom01" class="form-label">Nombre</label>
-                        <input type="text" name="nombre" class="form-control" id="validationCustom01">
+                        <input type="text" name="nombre" class="form-control" id="validationCustom01" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -41,7 +41,7 @@
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="invalidCheck">
                             <label class="form-check-label" for="invalidCheck">
-                                Estoy de acurdo con las condiciones
+                                Estoy de acuerdo con las condiciones
                             </label>
                             <div class="invalid-feedback">
                                 You must agree before submitting.

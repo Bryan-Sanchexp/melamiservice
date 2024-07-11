@@ -5,10 +5,12 @@ namespace Controllers\Ventas;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Models/MaterialesModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Models/UsuarioModel.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Models/PedidoModel.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/vendor/autoload.php';
 
 use Models\Usuario as UsuarioModel;
 use Models\Pedido as PedidoModel;
 use Models\Materiales as MaterialesModel;
+use Dompdf\Dompdf;
 
 class Pedido
 {
@@ -47,10 +49,10 @@ class Pedido
         require_once("views/Ventas/agregarPedido.php");
     }
 
-    public function obtenerPedidos()
+    public function obtenerPedidos(string $fechaInicio,string $fechaFin)
     {
         $pedidoModel = new PedidoModel();
-        return ['data' => $pedidoModel->mostrar()];
+        return ['data' => $pedidoModel->mostrar($fechaInicio,$fechaFin)];
     }
 
     public function agregar(array $datos)
@@ -103,6 +105,40 @@ class Pedido
         $pedidoModel = new PedidoModel();
         $pedidoModel->setId($id);
         return $pedidoModel->eliminar();
+    }
+
+    public function reportePedido(){
+        $pedidoModel = new PedidoModel();
+
+        $fechaInicio = $_POST['fechaInicio'];
+        $fechaFin = $_POST['fechaFin'];
+
+        $pedidos = $pedidoModel->mostrar($fechaInicio,$fechaFin);
+
+        foreach ($pedidos as $k=>$pedido) {
+            $pedidoModel->setId($pedido['id']);
+            $pedidos[$k]['materiales'] = $pedidoModel->mostrarDetallePedido();
+        }
+        
+        if($_POST['accion'] == "pdf"){
+            ob_start();
+            include_once $_SERVER['DOCUMENT_ROOT'] . '/Views/Ventas/reportes/detallePedidoPDF.php';
+            $html = ob_get_clean();
+            $dompdf = new Dompdf();
+            $dompdf->loadHtml($html);
+            $dompdf->setPaper('A4', 'landscape');
+            $dompdf->render();
+            $dompdf->stream("reporte_pedidos.pdf",array("Attachment" => false));
+        }else{
+            header("Content-Type: application/xls"); 
+            header('Content-Type: text/html; charset=utf-8');
+            header("Content-Disposition: attachment; filename=reporte_de_pedidos_" .date('Y:m:d:m:s').".xls");
+            header("Pragma: no-cache"); 
+            header("Expires: 0");
+            ob_start();
+            include_once $_SERVER['DOCUMENT_ROOT'] . '/Views/Ventas/reportes/detallePedidoExcel.php';
+            echo ob_get_clean();
+        }
     }
     
 

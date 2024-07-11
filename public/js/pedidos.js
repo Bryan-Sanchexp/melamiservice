@@ -3,6 +3,7 @@ function loadPage() {
     const txtFechaFin = document.querySelector("#txtFechaFin");
     const txtFechaInicio = document.querySelector("#txtFechaInicio");
     
+    console.log(txtFechaFin.value,txtFechaInicio.value)
     const configTablaProductos = {
         ...helper.configuracionDataTable,
         "ajax": {
@@ -10,14 +11,13 @@ function loadPage() {
             "method" : "POST",
             "data": function ( d ) {
                 d.accion = 'ver-pedidos';
+                d.ffin = txtFechaFin.value;
+                d.finicio = txtFechaInicio.value;
             }
         },
         columns: [
             {
-                data: 'id',
-                render: function(data,type,row, meta){
-                    return meta.row + 1;
-                }
+                data: 'nroPedido'
             },
             {
                 data: 'cliente'
@@ -110,7 +110,9 @@ function loadPage() {
             helper.sweetAlert("error",null,"Error al agregar pedido");
         }
     })
-    
+
+    document.querySelector("#btnAplicarFiltro").onclick = e => datatableMisBodegas.ajax.reload();
+
     function reporte(e) {
         const formulario = document.createElement("form");
         formulario.innerHTML = `
@@ -119,7 +121,7 @@ function loadPage() {
         <input value="${e.target.dataset.accion}" name="accion"/>
         `
         formulario.method = "POST";
-        formulario.action = window.location.origin + "/intranet/pedidos/reporte-ventas";
+        formulario.action = window.location.origin + "/intranet/pedidos/reporte-pedidos";
         const submit = document.createElement("input");
         submit.type = "submit";
         formulario.append(submit);

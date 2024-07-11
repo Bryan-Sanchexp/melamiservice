@@ -11,4 +11,8 @@ switch ($_POST['accion']) {
         $response = $cColaboradores->obtenerColaboradores();
         echo json_encode($response);
     break;
+    case 'eliminar-colaborador':
+        $response = $cColaboradores->eliminarColaborador($_POST['idColaborador']);
+        echo json_encode($response);
+    break;
 }

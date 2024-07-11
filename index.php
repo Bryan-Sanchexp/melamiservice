@@ -16,7 +16,7 @@ $router->add("/intranet/colaboradores/producto/historial", "Controllers\Colabora
 $router->add("/intranet/colaboradores/producto/histoarial", "Controllers\Colaboradores\Producto@indexHistorialProducto");
 $router->add("/intranet/colaboradores/agregar-venta", "Controllers\Colaboradores\Venta@indexColaboradoresAgregarVenta");
 
-// $router->add("/intranet/pedidos/reporte-ventas", "Controllers\Ventas\Pedidos@reporteVenta");
+$router->add("/intranet/pedidos/reporte-pedidos", "Controllers\Ventas\Pedido@reportePedido");
 
 $router->add("/intranet/colaboradores/reporte-ventas", "Controllers\Colaboradores\Venta@reporteVenta");
 $router->add("/intranet/colaboradores/mis-productos", "Controllers\Colaboradores\Producto@indexAdminMisProductos");

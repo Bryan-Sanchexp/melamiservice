@@ -63,6 +63,16 @@ class Materiales {
         return $materialesModel->verMaterial();
     }
 
+    public function actualizarMaterial(int $id, string $nombre, string $marca, string $precio){
+        $materialesModel = new MaterialesModel();
+        $materialesModel->setId($id);
+        $materialesModel->setNombre($nombre);
+        $materialesModel->setMarca($marca);
+        $materialesModel->setPrecio($precio);
+
+        return $materialesModel ->actualizar();
+    }
+
     public function verificarMaterialStock(array $materiales)
     {
         $materialesModel = new MaterialesModel();

@@ -9,7 +9,7 @@ switch ($_POST['accion']) {
         echo json_encode($response);
     break;
     case 'ver-pedidos':
-        $response = $pedido->obtenerPedidos();
+        $response = $pedido->obtenerPedidos($_POST['finicio'],$_POST['ffin']);
         echo json_encode($response);
     break;
     case 'eliminar-pedido':

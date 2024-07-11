@@ -44,6 +44,18 @@ class Colaboradores extends Conexion
         $stmt->close();
         return $response;
     }
+
+    public function eliminar()
+    {
+        $cn = $this->conectar();
+        $stmt = $cn->prepare("CALL SP_D_T_COLABORADOR(?)");
+        $stmt->bind_param("i", $this->id);
+        $stmt->execute();
+        $response = $stmt->error == '' ? ['success' => 'Colaborador eliminado correctamente'] : ['error' => 'El colaborador no se eliminó'];
+        $stmt->close();
+        return $response;
+    }
+
     public function rankingDashboard(string $fechaInicio, string $fechaFin){
         $cn = $this->conectar();
         $stmt = $cn->prepare("CALL SP_DASHBOARD_RANKIN_BODEGAS(?,?)");

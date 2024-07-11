@@ -14,18 +14,19 @@
     <main class="contenido-pagina">
         <h3 class="text-center titulo-principal-modulo mb-4">Pedidos</h3>
 
-        <!-- FILTROS -->
-        <div class="py-3">
+            <div class="contenido-tabla bg-white p-3 mb-4">
+            <div class="py-3">
                 <h4 class="titulo-principal-modulo"><i class="fa-solid fa-caret-right"></i> Filtros</h4>
             </div>
-        <form id="filtros" class="row">
+
+            <form id="filtros" class="row">
                 <div class="col-12 col-md-6 col-lg-3">
                     <label for="txtFechaInicio">Fecha Inicio</label>
-                    <input type="date" name="fechaInicio" id="txtFechaInicio" class="form-control form-control-sm" value="<?php echo date("Y-m-d",strtotime(date('Y-m-d')."- 30 days"))?>">
+                    <input type="date" name="fechaInicio" id="txtFechaInicio" class="form-control form-control-sm" value="<?php echo date("Y-m-d",strtotime(date('Y-m-d')."- 6 months"))?>">
                 </div>
                 <div class="col-12 col-md-6 col-lg-3">
                     <label for="txtFechaFin">Fecha Fin</label>
-                    <input type="date" name="fechaFin" id="txtFechaFin" class="form-control form-control-sm" value="<?php echo date('Y-m-d')?>">
+                    <input type="date" name="fechaFin" id="txtFechaFin" class="form-control form-control-sm" value="<?php echo date("Y-m-d",strtotime(date('Y-m-d')."+ 4 months"))?>">
                 </div>
                 <div class="col-12 col-lg-3">
                     <div class="d-flex" style="gap:5px;">
@@ -38,47 +39,15 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <!-- Agrega un botón para descargar en PDF -->
-                                            <button id="btnDescargarPDF" class="btn btn-primary">Descargar PDF</button>
-
-                                            <script src="jspdf.min.js"></script>
-                                            <script>
-                                                document.getElementById('btnDescargarPDF').addEventListener('click', function () {
-                                                    // Instancia de jsPDF
-                                                    var doc = new jsPDF();
-
-                                                    // Título del documento
-                                                    doc.text('Lista de pedidos', 10, 10);
-
-                                                    // Obtener la tabla
-                                                    var tabla = document.getElementById('misBodegas');
-
-                                                    // Configurar opciones de la tabla
-                                                    var options = {
-                                                        theme: 'grid',
-                                                        styles: {
-                                                            fontSize: 8,
-                                                            cellPadding: 3,
-                                                            lineWidth: 0.1,
-                                                            valign: 'middle',
-                                                            halign: 'center'
-                                                        }
-                                                    };
-
-                                                    // Generar PDF desde la tabla
-                                                    doc.autoTableHtmlToJson(tabla);
-                                                    doc.autoTable(doc.autoTableHtmlToJson(tabla), options);
-
-                                                    // Descargar el PDF
-                                                    doc.save('lista_pedidos.pdf');
-                                                });
-                                            </script>
-
+                                    <button type="button" class="dropdown-item text-secondary" id="btnReporteDetalle" data-accion="pdf">
+                                        <i class="far fa-file-pdf text-danger"></i>
+                                        PDF - Detalle de pedido
+                                    </button>
                                 </li>
                                 <li>
                                     <button type="button" class="dropdown-item text-secondary" id="btnReporteDetalleExcel" data-accion="excel">
                                         <i class="far fa-file-excel text-success"></i>
-                                        EXCEL - Detalle de venta
+                                        EXCEL - Detalle de pedido
                                     </button>
                                 </li>
                             </ul>
@@ -86,7 +55,8 @@
                     </div>
                 </div>
             </form>
-            <!-- FIN FILTROS -->
+            
+        </div>
 
             
         <div class="contenido-tabla bg-white p-3">
@@ -96,7 +66,7 @@
             <table class="table table-sm table-bordered" id="misBodegas">
                 <thead class="text-center">
                     <tr>
-                        <th>ID</th>
+                        <th>N° Pedido</th>
                         <th>Cliente</th>
                         <th>Ciudad</th>
                         <th>Direccion</th>

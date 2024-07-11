@@ -5,15 +5,15 @@ function loadPage() {
         ...helper.configuracionDataTable,
         "ajax": {
             "url": helper.urlMateriales,
-            "method" : "POST",
-            "data": function ( d ) {
+            "method": "POST",
+            "data": function (d) {
                 d.accion = 'ver-materiales';
             }
         },
         columns: [
             {
                 data: 'id',
-                render: function(data,type,row, meta){
+                render: function (data, type, row, meta) {
                     return meta.row + 1;
                 }
             },
@@ -29,11 +29,11 @@ function loadPage() {
             {
                 data: 'stock'
             },
-            
+
             {
                 data: 'id',
-                render : function(data){
-                    return `<div class="d-flex justify-content-center" style="gap:5px;"><button class="btn btn-sm btn-outline-info p-1" data-materiales="${data}">
+                render: function (data, type, row, meta) {
+                    return `<div class="d-flex justify-content-center" style="gap:5px;"><button class="btn btn-sm btn-outline-info p-1" data-materiales="${data}" data-meta="${meta.row}">
                         <small>
                         <i class="fas fa-pencil-alt"></i>
                         Editar
@@ -51,60 +51,93 @@ function loadPage() {
     }
     const datatableMateriales = $('#misMateriales').DataTable(configTablaMateriales);
     const tablaMisMateriales = document.querySelector("#misMateriales");
-    const modalEditarMateriales = document.querySelector("#materialesModal");
-    const modalMateriales = new bootstrap.Modal(modalEditarMateriales);
-    tablaMisMateriales.querySelector("tbody").addEventListener("click",async function(event){
-        if(event.target.classList.contains("btn-outline-info")){
-            modalMateriales.show();
+
+    const modalEditarMateriales = document.querySelector("#editarMaterialesModal");
+    const modalBoxEditarMateriales = new bootstrap.Modal(modalEditarMateriales);
+    const frmEditarMateriales = document.querySelector("#frmEditarMateriales");
+    const btnModalEditarMateriales = document.querySelector("#btnModalEditarMateriales");
+
+    tablaMisMateriales.querySelector("tbody").addEventListener("click", async function (event) {
+        const idMaterial = event.target.dataset.materiales;
+        if (event.target.classList.contains("btn-outline-info")) {
+            modalBoxEditarMateriales.show();
+            datatableRow = datatableMateriales.row(event.target.dataset.meta).data()
+            document.querySelector('input[name="editarNombre"]').value = datatableRow.nombre;
+            document.querySelector('input[name="editarMarca"]').value = datatableRow.marca;
+            document.querySelector('input[name="editarPrecio"]').value = datatableRow.precio;
+            document.querySelector('input[name="editarStock"]').value = datatableRow.stock;
+
+            btnModalEditarMateriales.onclick = e => document.querySelector("#btnSubmitFrmEditarMateriales").click();
+
+            frmEditarMateriales.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                let datos = new FormData(this);
+                datos.append("accion", "actualizar-material");
+                datos.append("idMateriales", idMaterial);
+                try {
+                    const response = await helper.peticionHttp(helper.urlMateriales, "POST", datos);
+                    if (response.success) {
+                        helper.alertaToast("success", response.success);
+                        modalBoxEditarMateriales.hide()
+                        datatableMateriales.ajax.reload();
+                    }
+                } catch (error) {
+                    helper.alertaToast("error", "Error al editar los datos del material");
+                }
+            })
+
+
         }
         //
-        if(event.target.classList.contains("btn-outline-danger")){
+        if (event.target.classList.contains("btn-outline-danger")) {
             const idMateriales = event.target.dataset.materiales;
             try {
-                const alertaSweet = await helper.sweetAlertConfirm(null,"¿Deseas eliminar este material?");
-                if(alertaSweet.isConfirmed){
+                const alertaSweet = await helper.sweetAlertConfirm(null, "¿Deseas eliminar este material?");
+                if (alertaSweet.isConfirmed) {
                     let datos = new FormData();
-                    datos.append("accion","eliminar-materiales");
-                    datos.append("idMateriales",idMateriales);
-                    const response = await helper.peticionHttp(helper.urlMateriales,"POST",datos);
-                    if(response.success){
+                    datos.append("accion", "eliminar-materiales");
+                    datos.append("idMateriales", idMateriales);
+                    const response = await helper.peticionHttp(helper.urlMateriales, "POST", datos);
+                    if (response.success) {
                         datatableMateriales.ajax.reload();
                     }
                     helper.alertaToast(response.success ? "success" : "error", response.success ? response.success : "Error al eliminar el material");
                 }
             } catch (error) {
-                helper.alertaToast("error","Error al eliminar el material");
+                helper.alertaToast("error", "Error al eliminar el material");
                 console.error(error);
             }
         }
     });
 
-    const btnModalMateriales= document.querySelector("#btnModalMateriales");
+    const modalMateriales = document.querySelector("#materialesModal");
+    const modalBoxMateriales = new bootstrap.Modal(modalMateriales);
+    const btnModalMateriales = document.querySelector("#btnModalMateriales");
     const frmMateriales = document.querySelector("#frmMateriales ");
     btnModalMateriales.onclick = e => document.querySelector("#btnSubmitFrmMateriales").click();
-    frmMateriales.addEventListener("submit",async function(e){
+    frmMateriales.addEventListener("submit", async function (e) {
         e.preventDefault();
         // return Swal.fire({
         //     icon: 'error',
         //     text: 'El nombre del material no debe estar vacía'
         // });
         let datos = new FormData(this);
-        datos.append("accion","agregar-materiales");
+        datos.append("accion", "agregar-materiales");
         try {
-            const response = await helper.peticionHttp(helper.urlMateriales,"POST",datos);
-            if(response.success){
-                modalMateriales.hide();
+            const response = await helper.peticionHttp(helper.urlMateriales, "POST", datos);
+            if (response.success) {
+                modalBoxMateriales.hide();
                 datatableMateriales.ajax.reload();
-                helper.sweetAlert("success",null,response.success);
+                helper.sweetAlert("success", null, response.success);
                 this.reset();
-            }else if(response.error){
-                helper.sweetAlert("error",null,response.error);
+            } else if (response.error) {
+                helper.sweetAlert("error", null, response.error);
             }
         } catch (error) {
             console.error(error);
-            helper.sweetAlert("error",null,"Error al agregar el material");
+            helper.sweetAlert("error", null, "Error al agregar el material");
         }
     })
-    
+
 }
-window.addEventListener("DOMContentLoaded",loadPage);
+window.addEventListener("DOMContentLoaded", loadPage);
