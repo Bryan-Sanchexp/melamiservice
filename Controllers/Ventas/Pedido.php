@@ -93,7 +93,7 @@ class Pedido
         $pedidoModel->setSubtotal($subtotal);
         $pedidoModel->setTotal($total);
         $pedidoModel->setIgv($igv);
-        $pedidoModel->setEstado("Pedido recibido");
+        $pedidoModel->setEstado("Sin procesar");
         $pedidoModel->setDetallePedido(json_encode($detallePedido));
         $resultado = $pedidoModel->agregar();
         error_log('Valor de $resultado: ' . print_r($pedidoModel, true));

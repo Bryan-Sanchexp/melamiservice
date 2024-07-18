@@ -72,6 +72,36 @@ class Pedido extends Conexion
         return $result;
     }
 
+    public function mostrarPedidosPorEstado(string $fechaInicio,string $fechaFin)
+    {
+        $cn = $this->conectar();
+        $stmt = $cn->prepare("CALL SP_R_T_PEDIDO_BY_STATUS(?,?)");
+        $stmt->bind_param("ss",$fechaInicio,$fechaFin);
+        $stmt->execute();
+        $rs = $stmt->get_result();
+        $result = [];
+        while ($result[] = $rs->fetch_assoc());
+        array_pop($result);
+        $stmt->close();
+        
+        return $result;
+    }
+
+    public function mostrarPedidosPorAnio(string $fechaInicio,string $fechaFin)
+    {
+        $cn = $this->conectar();
+        $stmt = $cn->prepare("CALL SP_R_T_PEDIDOS_VENDIDOS_YEAR(?,?)");
+        $stmt->bind_param("ss",$fechaInicio,$fechaFin);
+        $stmt->execute();
+        $rs = $stmt->get_result();
+        $result = [];
+        while ($result[] = $rs->fetch_assoc());
+        array_pop($result);
+        $stmt->close();
+        return $result;
+    }
+
+
     public function setId(int $id): self
     {
         $this->id = $id;

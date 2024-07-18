@@ -10,6 +10,7 @@ class Helper{
     urlVentasColaboradores = window.location.origin + "/Http/Colaboradores/Ventas.php"
     urlAccionHistorial = window.location.origin + "/Http/Colaboradores/Historial.php"
     urlDashboardColaboradores = window.location.origin + "/Http/Colaboradores/dashboard.php"
+    urlDashboardAdministrador = window.location.origin + "/Http/Administrador/dashboard.php"
 
 
     peticionHttp(url,metodo,datos){

@@ -122,7 +122,7 @@ function loadPage() {
     const txtFechaFin = document.querySelector("#txtFechaFin");
     async function cargarDashboard(){
         if(!txtFechaInicio.value || !txtFechaFin.value){
-            return helper.alertaToast("error","Establesca los parametros de fecha correctas");
+            return helper.alertaToast("error","Establezca los parametros de fecha correctas");
         }
         let datos = new FormData();
         datos.append("fInicio",txtFechaInicio.value);

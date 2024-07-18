@@ -85,6 +85,21 @@ class Materiales extends Conexion
         $stmt->close();
         return $result;
     }
+
+    public function rankingMateriales(string $fechaInicio,string $fechaFin)
+    {
+        $cn = $this->conectar();
+        $stmt = $cn->prepare("CALL SP_R_T_RANKING_MATERIALES(?,?)");
+        $stmt->bind_param("ss",$fechaInicio,$fechaFin);
+        $stmt->execute();
+        $rs = $stmt->get_result();
+        $result = [];
+        while ($result[] = $rs->fetch_assoc());
+        array_pop($result);
+        $stmt->close();
+        
+        return $result;
+    }
    
     /**
      * Get the value of id
